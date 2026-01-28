@@ -51,15 +51,29 @@ igit and git operate on completely separate repos (`.igit/` vs `.git/`) with
 separate histories, branches, and remotes. You can push your igit repo to a
 private remote independently.
 
+## .igitignore
+
+Some files are gitignored but still shouldn't be tracked by igit — build
+artifacts, `node_modules/`, etc. Create a `.igitignore` file with normal
+gitignore syntax to exclude these:
+
+```bash
+# .igitignore - files igit should also ignore
+build/
+node_modules/
+*.o
+```
+
 ## Patch summary
 
-This is a minimal patch (4 files, ~15 lines changed) against git v2.53.0-rc2:
+This is a minimal patch (5 files, ~80 lines changed) against git v2.53.0-rc2:
 
 | File | Change |
 |---|---|
 | `environment.h` | Default dir `.git` → `.igit`; declare `core_invert_exclude` |
 | `environment.c` | `core_invert_exclude = 1` default; config parser for `core.invertexclude` |
-| `dir.c` | `is_excluded()` flips result when `core_invert_exclude` is set |
+| `dir.c` | `is_excluded()` flips result when `core_invert_exclude` is set; load `.igitignore` |
+| `dir.h` | Add `EXC_IGIT` pattern group and `igitignore_per_dir` field |
 | `builtin/init-db.c` | `guess_repository_type()` recognizes `.igit` as non-bare |
 
 ## Configuration
