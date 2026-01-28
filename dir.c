@@ -1772,6 +1772,18 @@ static void prep_exclude(struct dir_struct *dir,
 				     PATTERN_NOFOLLOW,
 				     untracked ? &oid_stat : NULL);
 		}
+
+		/* Try to read .igitignore for non-inverted excludes */
+		if (dir->igitignore_per_dir) {
+			struct strbuf sb = STRBUF_INIT;
+			struct pattern_list *igit_pl;
+			strbuf_addbuf(&sb, &dir->internal.basebuf);
+			strbuf_addstr(&sb, dir->igitignore_per_dir);
+			igit_pl = add_pattern_list(dir, EXC_IGIT, NULL);
+			igit_pl->src = strbuf_detach(&sb, NULL);
+			add_patterns(igit_pl->src, igit_pl->src, stk->baselen,
+				     igit_pl, istate, PATTERN_NOFOLLOW, NULL);
+		}
 		/*
 		 * NEEDSWORK: when untracked cache is enabled, prep_exclude()
 		 * will first be called in valid_cached_dir() then maybe many
@@ -1822,6 +1834,33 @@ struct path_pattern *last_matching_pattern(struct dir_struct *dir,
 }
 
 /*
+ * Check if pathname matches any pattern in the EXC_IGIT group.
+ * Returns 1 if excluded by .igitignore, 0 otherwise.
+ */
+static int is_excluded_by_igitignore(struct dir_struct *dir,
+				     struct index_state *istate,
+				     const char *pathname, int *dtype_p)
+{
+	int j;
+	int pathlen = strlen(pathname);
+	const char *basename = strrchr(pathname, '/');
+	struct exclude_list_group *group;
+	struct path_pattern *pattern;
+
+	basename = basename ? basename + 1 : pathname;
+	group = &dir->internal.exclude_list_group[EXC_IGIT];
+
+	for (j = group->nr - 1; j >= 0; j--) {
+		pattern = last_matching_pattern_from_list(
+			pathname, pathlen, basename, dtype_p,
+			&group->pl[j], istate);
+		if (pattern)
+			return pattern->flags & PATTERN_FLAG_NEGATIVE ? 0 : 1;
+	}
+	return 0;
+}
+
+/*
  * Loads the exclude lists for the directory containing pathname, then
  * scans all exclude lists to determine whether pathname is excluded.
  * Returns 1 if true, otherwise 0.
@@ -1831,11 +1870,25 @@ int is_excluded(struct dir_struct *dir, struct index_state *istate,
 {
 	struct path_pattern *pattern =
 		last_matching_pattern(dir, istate, pathname, dtype_p);
+	int dominated_by_gitignore;
+
 	if (pattern) {
 		int excluded = pattern->flags & PATTERN_FLAG_NEGATIVE ? 0 : 1;
-		return core_invert_exclude ? !excluded : excluded;
+		dominated_by_gitignore = core_invert_exclude ? !excluded : excluded;
+	} else {
+		dominated_by_gitignore = core_invert_exclude ? 1 : 0;
 	}
-	return core_invert_exclude ? 1 : 0;
+
+	/*
+	 * When core.invertExclude is set and the file is visible (not excluded
+	 * after inversion), check .igitignore patterns which are NOT inverted.
+	 */
+	if (core_invert_exclude && !dominated_by_gitignore) {
+		if (is_excluded_by_igitignore(dir, istate, pathname, dtype_p))
+			return 1;
+	}
+
+	return dominated_by_gitignore;
 }
 
 static struct dir_entry *dir_entry_new(const char *pathname, int len)
@@ -3482,6 +3535,8 @@ static GIT_PATH_FUNC(git_path_info_exclude, "info/exclude")
 void setup_standard_excludes(struct dir_struct *dir)
 {
 	dir->exclude_per_dir = ".gitignore";
+	if (core_invert_exclude)
+		dir->igitignore_per_dir = ".igitignore";
 
 	/* core.excludesfile defaulting to $XDG_CONFIG_HOME/git/ignore */
 	if (!excludes_file)

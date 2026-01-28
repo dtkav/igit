@@ -307,6 +307,12 @@ struct dir_struct {
 	 */
 	const char *exclude_per_dir;
 
+	/**
+	 * When core.invertExclude is set, this tracks the name of the file
+	 * to read for non-inverted excludes (typically `.igitignore`).
+	 */
+	const char *igitignore_per_dir;
+
 	struct dir_struct_internal {
 		/* Keeps track of allocation of `entries[]` array.*/
 		int alloc;
@@ -330,7 +336,8 @@ struct dir_struct {
 #define EXC_CMDL 0
 #define EXC_DIRS 1
 #define EXC_FILE 2
-		struct exclude_list_group exclude_list_group[3];
+#define EXC_IGIT 3
+		struct exclude_list_group exclude_list_group[4];
 
 		/*
 		 * Temporary variables which are used during loading of the
