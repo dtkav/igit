@@ -77,6 +77,7 @@ enum object_creation_mode object_creation_mode = OBJECT_CREATION_MODE;
 int grafts_keep_true_parents;
 int core_apply_sparse_checkout;
 int core_sparse_checkout_cone;
+int core_invert_exclude = 1;
 int sparse_expect_files_outside_of_patterns;
 int precomposed_unicode = -1; /* see probe_utf8_pathname_composition() */
 unsigned long pack_size_limit_cfg;
@@ -527,6 +528,11 @@ int git_default_core_config(const char *var, const char *value,
 
 	if (!strcmp(var, "core.sparsecheckoutcone")) {
 		core_sparse_checkout_cone = git_config_bool(var, value);
+		return 0;
+	}
+
+	if (!strcmp(var, "core.invertexclude")) {
+		core_invert_exclude = git_config_bool(var, value);
 		return 0;
 	}
 

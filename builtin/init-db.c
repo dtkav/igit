@@ -34,10 +34,10 @@ static int guess_repository_type(const char *git_dir)
 	/*
 	 * "GIT_DIR=.git or GIT_DIR=something/.git is usually not.
 	 */
-	if (!strcmp(git_dir, ".git"))
+	if (!strcmp(git_dir, ".git") || !strcmp(git_dir, ".igit"))
 		return 0;
 	slash = strrchr(git_dir, '/');
-	if (slash && !strcmp(slash, "/.git"))
+	if (slash && (!strcmp(slash, "/.git") || !strcmp(slash, "/.igit")))
 		return 0;
 
 	/*

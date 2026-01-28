@@ -1831,9 +1831,11 @@ int is_excluded(struct dir_struct *dir, struct index_state *istate,
 {
 	struct path_pattern *pattern =
 		last_matching_pattern(dir, istate, pathname, dtype_p);
-	if (pattern)
-		return pattern->flags & PATTERN_FLAG_NEGATIVE ? 0 : 1;
-	return 0;
+	if (pattern) {
+		int excluded = pattern->flags & PATTERN_FLAG_NEGATIVE ? 0 : 1;
+		return core_invert_exclude ? !excluded : excluded;
+	}
+	return core_invert_exclude ? 1 : 0;
 }
 
 static struct dir_entry *dir_entry_new(const char *pathname, int len)

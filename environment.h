@@ -9,7 +9,7 @@
 #define GIT_NAMESPACE_ENVIRONMENT "GIT_NAMESPACE"
 #define GIT_WORK_TREE_ENVIRONMENT "GIT_WORK_TREE"
 #define GIT_PREFIX_ENVIRONMENT "GIT_PREFIX"
-#define DEFAULT_GIT_DIR_ENVIRONMENT ".git"
+#define DEFAULT_GIT_DIR_ENVIRONMENT ".igit"
 #define DB_ENVIRONMENT "GIT_OBJECT_DIRECTORY"
 #define INDEX_ENVIRONMENT "GIT_INDEX_FILE"
 #define GRAFT_ENVIRONMENT "GIT_GRAFT_FILE"
@@ -165,6 +165,7 @@ extern int protect_ntfs;
 
 extern int core_apply_sparse_checkout;
 extern int core_sparse_checkout_cone;
+extern int core_invert_exclude;
 extern int sparse_expect_files_outside_of_patterns;
 
 enum rebase_setup_type {
