@@ -1,3 +1,84 @@
+igit — inverse git
+==================
+
+igit is a patched build of git that inverts `.gitignore` semantics. It can
+**only** track files that are ignored by a regular git repo in the same
+directory. This lets you version-control private config, secrets, and
+deployment files alongside a public project without leaking them.
+
+## The problem
+
+You maintain an open-source project but also have private files — deployment
+configs, `.env` files, `fly.toml`, `docker-compose.override.yml`, etc. These
+are gitignored so they don't end up in the public repo. But they contain
+important configuration you don't want to lose, and you want version history
+on them too.
+
+## How it works
+
+igit is a standalone git binary with three small changes:
+
+1. **Default directory is `.igit/`** instead of `.git/`, so the two repos
+   coexist without interfering.
+2. **`core.invertExclude` defaults to `true`**, which flips the result of
+   git's `is_excluded()` function. Files matched by `.gitignore` rules become
+   visible; everything else is ignored.
+3. **`igit init` recognizes `.igit/`** as a non-bare repository directory,
+   so it auto-configures the worktree (just like git does with `.git/`).
+
+Because the inversion happens inside git's own exclude engine, every command
+works correctly — `status`, `add`, `diff`, `log`, `stash`, all of it. No
+wrapper scripts, no generated ignore files, no drift.
+
+## Usage
+
+```bash
+# Build from source
+make -j$(nproc) NO_CURL=1 NO_EXPAT=1
+cp git ~/bin/igit
+
+# In any project with a .gitignore
+cd my-project
+igit init
+igit add .
+igit commit -m "track private configs"
+
+# Add .igit to your regular .gitignore
+echo .igit >> .gitignore
+```
+
+igit and git operate on completely separate repos (`.igit/` vs `.git/`) with
+separate histories, branches, and remotes. You can push your igit repo to a
+private remote independently.
+
+## Patch summary
+
+This is a minimal patch (4 files, ~15 lines changed) against git v2.53.0-rc2:
+
+| File | Change |
+|---|---|
+| `environment.h` | Default dir `.git` → `.igit`; declare `core_invert_exclude` |
+| `environment.c` | `core_invert_exclude = 1` default; config parser for `core.invertexclude` |
+| `dir.c` | `is_excluded()` flips result when `core_invert_exclude` is set |
+| `builtin/init-db.c` | `guess_repository_type()` recognizes `.igit` as non-bare |
+
+## Configuration
+
+The inversion can be toggled per-repo:
+
+```bash
+# Disable inversion (makes igit behave like regular git with a .igit dir)
+igit config core.invertExclude false
+```
+
+## License
+
+Same as git — GPLv2. See [COPYING](COPYING).
+
+---
+
+# Original git README
+
 [![Build status](https://github.com/git/git/workflows/CI/badge.svg)](https://github.com/git/git/actions?query=branch%3Amaster+event%3Apush)
 
 Git - fast, scalable, distributed revision control system
