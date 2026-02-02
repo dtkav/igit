@@ -1,0 +1,68 @@
+name: Build
+
+on:
+  push:
+    branches: [master]
+    tags: ['v*']
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            name: linux-x64
+          - os: macos-14
+            name: macos-arm64
+          - os: macos-15-intel
+            name: macos-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install dependencies (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libz-dev
+
+      - name: Build igit
+        run: make -j$(nproc 2>/dev/null || sysctl -n hw.ncpu) NO_CURL=1 NO_EXPAT=1 NO_GETTEXT=1
+
+      - name: Rename binary
+        run: cp git igit
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: igit-${{ matrix.name }}
+          path: igit
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Prepare release assets
+        run: |
+          cd artifacts
+          for dir in */; do
+            name="${dir%/}"
+            mv "$dir/igit" "$name"
+            chmod +x "$name"
+          done
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/igit-*
+          generate_release_notes: true
