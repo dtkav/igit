@@ -57,12 +57,13 @@ jobs:
           cd artifacts
           for dir in */; do
             name="${dir%/}"
-            mv "$dir/igit" "$name"
-            chmod +x "$name"
+            mv "$dir/igit" "../$name"
+            chmod +x "../$name"
+            rmdir "$dir"
           done
 
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
-          files: artifacts/igit-*
+          files: igit-*
           generate_release_notes: true
