@@ -45,7 +45,7 @@
 #include "parse-options.h"
 
 static const char * const receive_pack_usage[] = {
-	N_("git receive-pack <git-dir>"),
+	N_("igit receive-pack <git-dir>"),
 	NULL
 };
 
@@ -1273,7 +1273,7 @@ cleanup:
 static const char *refuse_unconfigured_deny_msg =
 	N_("By default, updating the current branch in a non-bare repository\n"
 	   "is denied, because it will make the index and work tree inconsistent\n"
-	   "with what you pushed, and will require 'git reset --hard' to match\n"
+	   "with what you pushed, and will require 'igit reset --hard' to match\n"
 	   "the work tree to HEAD.\n"
 	   "\n"
 	   "You can set the 'receive.denyCurrentBranch' configuration variable\n"
@@ -1292,7 +1292,7 @@ static void refuse_unconfigured_deny(void)
 
 static const char *refuse_unconfigured_deny_delete_current_msg =
 	N_("By default, deleting the current branch is denied, because the next\n"
-	   "'git clone' won't result in any file checked out, causing confusion.\n"
+	   "'igit clone' won't result in any file checked out, causing confusion.\n"
 	   "\n"
 	   "You can set 'receive.denyDeleteCurrent' configuration variable to\n"
 	   "'warn' or 'ignore' in the remote repository to allow deleting the\n"

@@ -817,7 +817,7 @@ static enum bisect_error handle_bad_merge_base(void)
 	}
 
 	fprintf(stderr, _("Some %s revs are not ancestors of the %s rev.\n"
-		"git bisect cannot work properly in this case.\n"
+		"igit bisect cannot work properly in this case.\n"
 		"Maybe you mistook %s and %s revs?\n"),
 		term_good, term_bad, term_good, term_bad);
 	return BISECT_FAILED;
@@ -973,10 +973,10 @@ static void show_commit(struct commit *commit)
 
 	/*
 	 * Call git show with --no-pager, as it would otherwise
-	 * paginate the "git show" output only, not the output
+	 * paginate the "igit show" output only, not the output
 	 * from bisect_next_all(); this can be fixed by moving
 	 * it into a --format parameter, but that would override
-	 * the user's default options for "git show", which we
+	 * the user's default options for "igit show", which we
 	 * are trying to honour.
 	 */
 	strvec_pushl(&show.args,

@@ -1041,7 +1041,7 @@ int count_refspec_match(const char *pattern,
 		 * heads or tags, and did not specify the pattern
 		 * in full (e.g. "refs/remotes/origin/master") or at
 		 * least from the toplevel (e.g. "remotes/origin/master");
-		 * otherwise "git push $URL master" would result in
+		 * otherwise "igit push $URL master" would result in
 		 * ambiguity between remotes/origin/master and heads/master
 		 * at the remote site.
 		 */
@@ -1173,7 +1173,7 @@ static void show_push_unqualified_ref_name_error(const char *dst_value,
 	struct object_id oid;
 
 	/*
-	 * TRANSLATORS: "matches '%s'%" is the <dst> part of "git push
+	 * TRANSLATORS: "matches '%s'%" is the <dst> part of "igit push
 	 * <remote> <src>:<dst>" push, and "being pushed ('%s')" is
 	 * the <src>.
 	 */
@@ -2257,7 +2257,7 @@ int format_tracking_info(struct branch *branch, struct strbuf *sb,
 			base);
 		if (advice_enabled(ADVICE_STATUS_HINTS))
 			strbuf_addstr(sb,
-				_("  (use \"git branch --unset-upstream\" to fixup)\n"));
+				_("  (use \"igit branch --unset-upstream\" to fixup)\n"));
 	} else if (!sti) {
 		strbuf_addf(sb,
 			_("Your branch is up to date with '%s'.\n"),
@@ -2268,7 +2268,7 @@ int format_tracking_info(struct branch *branch, struct strbuf *sb,
 			    base);
 		if (advice_enabled(ADVICE_STATUS_HINTS))
 			strbuf_addf(sb, _("  (use \"%s\" for details)\n"),
-				    "git status --ahead-behind");
+				    "igit status --ahead-behind");
 	} else if (!theirs) {
 		strbuf_addf(sb,
 			Q_("Your branch is ahead of '%s' by %d commit.\n",
@@ -2277,7 +2277,7 @@ int format_tracking_info(struct branch *branch, struct strbuf *sb,
 			base, ours);
 		if (advice_enabled(ADVICE_STATUS_HINTS))
 			strbuf_addstr(sb,
-				_("  (use \"git push\" to publish your local commits)\n"));
+				_("  (use \"igit push\" to publish your local commits)\n"));
 	} else if (!ours) {
 		strbuf_addf(sb,
 			Q_("Your branch is behind '%s' by %d commit, "
@@ -2288,7 +2288,7 @@ int format_tracking_info(struct branch *branch, struct strbuf *sb,
 			base, theirs);
 		if (advice_enabled(ADVICE_STATUS_HINTS))
 			strbuf_addstr(sb,
-				_("  (use \"git pull\" to update your local branch)\n"));
+				_("  (use \"igit pull\" to update your local branch)\n"));
 	} else {
 		strbuf_addf(sb,
 			Q_("Your branch and '%s' have diverged,\n"
@@ -2302,7 +2302,7 @@ int format_tracking_info(struct branch *branch, struct strbuf *sb,
 		if (show_divergence_advice &&
 		    advice_enabled(ADVICE_STATUS_HINTS))
 			strbuf_addstr(sb,
-				_("  (use \"git pull\" if you want to integrate the remote branch with yours)\n"));
+				_("  (use \"igit pull\" if you want to integrate the remote branch with yours)\n"));
 	}
 	free(base);
 	return 1;

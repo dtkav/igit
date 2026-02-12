@@ -1,5 +1,5 @@
 /*
- * Builtin "git diff"
+ * Builtin "igit diff"
  *
  * Copyright (c) 2006 Junio C Hamano
  */
@@ -30,7 +30,7 @@
 #define DIFF_NO_INDEX_IMPLICIT 2
 
 static const char builtin_diff_usage[] =
-"git diff [<options>] [<commit>] [--] [<path>...]\n"
+"igit diff [<options>] [<commit>] [--] [<path>...]\n"
 "   or: git diff [<options>] --cached [--merge-base] [<commit>] [--] [<path>...]\n"
 "   or: git diff [<options>] [--merge-base] <commit> [<commit>...] <commit> [--] [<path>...]\n"
 "   or: git diff [<options>] <commit>...<commit> [--] [<path>...]\n"
@@ -299,7 +299,7 @@ struct symdiff {
  * Check for symmetric-difference arguments, and if present, arrange
  * everything we need to know to handle them correctly.  As a bonus,
  * weed out all bogus range-based revision specifications, e.g.,
- * "git diff A..B C..D" or "git diff A..B C" get rejected.
+ * "igit diff A..B C..D" or "igit diff A..B C" get rejected.
  *
  * For an actual symmetric diff, *symdiff is set this way:
  *
@@ -325,8 +325,8 @@ static void symdiff_prepare(struct rev_info *rev, struct symdiff *sym)
 	 * right parts of symmetric difference, so that we do not
 	 * depend on the order that revisions are parsed.  If there
 	 * are any revs that aren't from these sources, we have a
-	 * "git diff C A...B" or "git diff A...B C" case.  Or we
-	 * could even get "git diff A...B C...E", for instance.
+	 * "igit diff C A...B" or "igit diff A...B C" case.  Or we
+	 * could even get "igit diff A...B C...E", for instance.
 	 *
 	 * If we don't have just one merge base, we pick one
 	 * at random.
@@ -467,7 +467,7 @@ int cmd_diff(int argc,
 		 * Treat git diff with at least one path outside of the
 		 * repo the same as if the command would have been executed
 		 * outside of a git repository.  In this case it behaves
-		 * the same way as "git diff --no-index <a> <b>", which acts
+		 * the same way as "igit diff --no-index <a> <b>", which acts
 		 * as a colourful "diff" replacement.
 		 */
 		if (nongit || ((argc == i + 2) &&

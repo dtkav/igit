@@ -16,7 +16,7 @@
 #include "parse-options.h"
 
 static const char *const merge_file_usage[] = {
-	N_("git merge-file [<options>] [-L <name1> [-L <orig> [-L <name2>]]] <file1> <orig-file> <file2>"),
+	N_("igit merge-file [<options>] [-L <name1> [-L <orig> [-L <name2>]]] <file1> <orig-file> <file2>"),
 	NULL
 };
 

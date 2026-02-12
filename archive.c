@@ -25,10 +25,10 @@
 #include "quote.h"
 
 static char const * const archive_usage[] = {
-	N_("git archive [<options>] <tree-ish> [<path>...]"),
-	"git archive --list",
-	N_("git archive --remote <repo> [--exec <cmd>] [<options>] <tree-ish> [<path>...]"),
-	N_("git archive --remote <repo> [--exec <cmd>] --list"),
+	N_("igit archive [<options>] <tree-ish> [<path>...]"),
+	"igit archive --list",
+	N_("igit archive --remote <repo> [--exec <cmd>] [<options>] <tree-ish> [<path>...]"),
+	N_("igit archive --remote <repo> [--exec <cmd>] --list"),
 	NULL
 };
 

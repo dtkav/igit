@@ -55,7 +55,7 @@ static int shared_callback(const struct option *opt, const char *arg, int unset)
 }
 
 static const char *const init_db_usage[] = {
-	N_("git init [-q | --quiet] [--bare] [--template=<template-directory>]\n"
+	N_("igit init [-q | --quiet] [--bare] [--template=<template-directory>]\n"
 	   "         [--separate-git-dir <git-dir>] [--object-format=<format>]\n"
 	   "         [--ref-format=<format>]\n"
 	   "         [-b <branch-name> | --initial-branch=<branch-name>]\n"

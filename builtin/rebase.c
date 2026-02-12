@@ -1,5 +1,5 @@
 /*
- * "git rebase" builtin command
+ * "igit rebase" builtin command
  *
  * Copyright (c) 2018 Pratik Karki
  */
@@ -38,11 +38,11 @@
 #include "hook.h"
 
 static char const * const builtin_rebase_usage[] = {
-	N_("git rebase [-i] [options] [--exec <cmd>] "
+	N_("igit rebase [-i] [options] [--exec <cmd>] "
 		"[--onto <newbase> | --keep-base] [<upstream> [<branch>]]"),
-	N_("git rebase [-i] [options] [--exec <cmd>] [--onto <newbase>] "
+	N_("igit rebase [-i] [options] [--exec <cmd>] [--onto <newbase>] "
 		"--root [<branch>]"),
-	"git rebase --continue | --abort | --skip | --edit-todo",
+	"igit rebase --continue | --abort | --skip | --edit-todo",
 	NULL
 };
 
@@ -559,7 +559,7 @@ static int finish_rebase(struct rebase_options *opts)
 			"AUTO_MERGE", NULL, REF_NO_DEREF);
 	apply_autostash(state_dir_path("autostash", opts));
 	/*
-	 * We ignore errors in 'git maintenance run --auto', since the
+	 * We ignore errors in 'igit maintenance run --auto', since the
 	 * user should see them.
 	 */
 	run_auto_maintenance(!(opts->flags & (REBASE_NO_QUIET|REBASE_VERBOSE)));
@@ -1142,11 +1142,11 @@ int cmd_rebase(int argc,
 		OPT_HIDDEN_BOOL(0, "ignore-date", &options.ignore_date,
 				N_("synonym of --reset-author-date")),
 		OPT_PASSTHRU_ARGV('C', NULL, &options.git_am_opts, N_("n"),
-				  N_("passed to 'git apply'"), 0),
+				  N_("passed to 'igit apply'"), 0),
 		OPT_BOOL(0, "ignore-whitespace", &ignore_whitespace,
 			 N_("ignore changes in whitespace")),
 		OPT_PASSTHRU_ARGV(0, "whitespace", &options.git_am_opts,
-				  N_("action"), N_("passed to 'git apply'"), 0),
+				  N_("action"), N_("passed to 'igit apply'"), 0),
 		OPT_BIT('f', "force-rebase", &options.flags,
 			N_("cherry-pick all commits, even if unchanged"),
 			REBASE_FORCE),
@@ -1255,7 +1255,7 @@ int cmd_rebase(int argc,
 	strbuf_reset(&buf);
 	strbuf_addf(&buf, "%s/applying", apply_dir());
 	if(file_exists(buf.buf))
-		die(_("It looks like 'git am' is in progress. Cannot rebase."));
+		die(_("It looks like 'igit am' is in progress. Cannot rebase."));
 
 	if (is_directory(apply_dir())) {
 		options.type = REBASE_APPLY;
@@ -1437,7 +1437,7 @@ int cmd_rebase(int argc,
 		const char *state_dir_base =
 			last_slash ? last_slash + 1 : options.state_dir;
 		const char *cmd_live_rebase =
-			"git rebase (--continue | --abort | --skip)";
+			"igit rebase (--continue | --abort | --skip)";
 		strbuf_reset(&buf);
 		strbuf_addf(&buf, "rm -fr \"%s\"", options.state_dir);
 		die(_("It seems that there is already a %s directory, and\n"

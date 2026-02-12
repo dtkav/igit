@@ -13,9 +13,9 @@
 #include "quote.h"
 
 static const char * const git_update_ref_usage[] = {
-	N_("git update-ref [<options>] -d <refname> [<old-oid>]"),
-	N_("git update-ref [<options>]    <refname> <new-oid> [<old-oid>]"),
-	N_("git update-ref [<options>] --stdin [-z] [--batch-updates]"),
+	N_("igit update-ref [<options>] -d <refname> [<old-oid>]"),
+	N_("igit update-ref [<options>]    <refname> <new-oid> [<old-oid>]"),
+	N_("igit update-ref [<options>] --stdin [-z] [--batch-updates]"),
 	NULL
 };
 

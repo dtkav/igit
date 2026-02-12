@@ -19,7 +19,7 @@
 #include "pathspec.h"
 
 static const char * const ls_tree_usage[] = {
-	N_("git ls-tree [<options>] <tree-ish> [<path>...]"),
+	N_("igit ls-tree [<options>] <tree-ish> [<path>...]"),
 	NULL
 };
 

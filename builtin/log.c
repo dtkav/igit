@@ -1,5 +1,5 @@
 /*
- * Builtin "git log" and related commands (show, whatchanged)
+ * Builtin "igit log" and related commands (show, whatchanged)
  *
  * (C) Copyright 2006 Linus Torvalds
  *		 2006 Junio Hamano
@@ -56,8 +56,8 @@ static int stdout_mboxrd;
 static int format_no_prefix;
 
 static const char * const builtin_log_usage[] = {
-	N_("git log [<options>] [<revision-range>] [[--] <path>...]"),
-	N_("git show [<options>] <object>..."),
+	N_("igit log [<options>] [<revision-range>] [[--] <path>...]"),
+	N_("igit show [<options>] <object>..."),
 	NULL
 };
 
@@ -543,9 +543,9 @@ int cmd_whatchanged(int argc,
 	cmd_log_init(argc, argv, prefix, &rev, &opt, &cfg);
 
 	if (!cfg.i_still_use_this)
-		you_still_use_that("git whatchanged",
+		you_still_use_that("igit whatchanged",
 				   _("\n"
-				     "hint: You can replace 'git whatchanged <opts>' with:\n"
+				     "hint: You can replace 'igit whatchanged <opts>' with:\n"
 				     "hint:\tgit log <opts> --raw --no-merges\n"
 				     "hint: Or make an alias:\n"
 				     "hint:\tgit config set --global alias.whatchanged 'log --raw --no-merges'\n"
@@ -598,7 +598,7 @@ static int show_blob_object(const struct object_id *oid, struct rev_info *rev, c
 	}
 
 	if (!buf)
-		die(_("git show %s: bad file"), obj_name);
+		die(_("igit show %s: bad file"), obj_name);
 
 	write_or_die(1, buf, size);
 	object_context_release(&obj_context);
@@ -770,7 +770,7 @@ int cmd_show(int argc,
 }
 
 /*
- * This is equivalent to "git log -g --abbrev-commit --pretty=oneline"
+ * This is equivalent to "igit log -g --abbrev-commit --pretty=oneline"
  */
 int cmd_log_reflog(int argc,
 		   const char **argv,
@@ -1466,7 +1466,7 @@ static const char *set_outdir(const char *prefix, const char *output_directory)
 }
 
 static const char * const builtin_format_patch_usage[] = {
-	N_("git format-patch [<options>] [<since> | <revision-range>]"),
+	N_("igit format-patch [<options>] [<since> | <revision-range>]"),
 	NULL
 };
 
@@ -2062,7 +2062,7 @@ int cmd_format_patch(int argc,
 
 	/*
 	 * Parse the arguments before setup_revisions(), or something
-	 * like "git format-patch -o a123 HEAD^.." may fail; a123 is
+	 * like "igit format-patch -o a123 HEAD^.." may fail; a123 is
 	 * possibly a valid SHA1.
 	 */
 	argc = parse_options(argc, argv, prefix, builtin_format_patch_options,
@@ -2224,7 +2224,7 @@ int cmd_format_patch(int argc,
 
 		if (rev.max_count < 0 && !rev.show_root_diff) {
 			/*
-			 * This is traditional behaviour of "git format-patch
+			 * This is traditional behaviour of "igit format-patch
 			 * origin" that prepares what the origin side still
 			 * does not have.
 			 */
@@ -2510,7 +2510,7 @@ static int add_pending_commit(const char *arg, struct rev_info *revs, int flags)
 }
 
 static const char * const cherry_usage[] = {
-	N_("git cherry [-v] [<upstream> [<head> [<limit>]]]"),
+	N_("igit cherry [-v] [<upstream> [<head> [<limit>]]]"),
 	NULL
 };
 

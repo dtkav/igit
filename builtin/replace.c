@@ -1,5 +1,5 @@
 /*
- * Builtin "git replace"
+ * Builtin "igit replace"
  *
  * Copyright (c) 2008 Christian Couder <chriscool@tuxfamily.org>
  *
@@ -26,12 +26,12 @@
 #include "wildmatch.h"
 
 static const char * const git_replace_usage[] = {
-	N_("git replace [-f] <object> <replacement>"),
-	N_("git replace [-f] --edit <object>"),
-	N_("git replace [-f] --graft <commit> [<parent>...]"),
-	"git replace [-f] --convert-graft-file",
-	N_("git replace -d <object>..."),
-	N_("git replace [--format=<format>] [-l [<pattern>]]"),
+	N_("igit replace [-f] <object> <replacement>"),
+	N_("igit replace [-f] --edit <object>"),
+	N_("igit replace [-f] --graft <commit> [<parent>...]"),
+	"igit replace [-f] --convert-graft-file",
+	N_("igit replace -d <object>..."),
+	N_("igit replace [--format=<format>] [-l [<pattern>]]"),
 	NULL
 };
 

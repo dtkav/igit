@@ -154,7 +154,7 @@ struct dirent_prec_psx *precompose_utf8_readdir(PREC_DIR *prec_dir)
 				die("iconv_open(%s,%s) failed, but needed:\n"
 						"    precomposed unicode is not supported.\n"
 						"    If you want to use decomposed unicode, run\n"
-						"    \"git config core.precomposeunicode false\"\n",
+						"    \"igit config core.precomposeunicode false\"\n",
 						repo_encoding, path_encoding);
 			} else {
 				iconv_ibp	cp = (iconv_ibp)res->d_name;

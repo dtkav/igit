@@ -75,7 +75,7 @@ static GIT_PATH_FUNC(git_path_abort_safety_file, "sequencer/abort-safety")
 static GIT_PATH_FUNC(rebase_path, "rebase-merge")
 /*
  * The file containing rebase commands, comments, and empty lines.
- * This file is created by "git rebase -i" then edited by the user. As
+ * This file is created by "igit rebase -i" then edited by the user. As
  * the lines are processed, they are removed from the front of this
  * file and written to the tail of 'done'.
  */
@@ -135,7 +135,7 @@ static GIT_PATH_FUNC(rebase_path_current_fixups, "rebase-merge/current-fixups")
 static GIT_PATH_FUNC(rebase_path_author_script, "rebase-merge/author-script")
 /*
  * When an "edit" rebase command is being processed, the SHA1 of the
- * commit to be edited is recorded in this file.  When "git rebase
+ * commit to be edited is recorded in this file.  When "igit rebase
  * --continue" is executed, if there are any staged changes then they
  * will be amended to the HEAD commit, but only provided the HEAD
  * commit is still the commit to be edited.  When any other rebase
@@ -508,10 +508,10 @@ static void free_message(struct commit *commit, struct commit_message *msg)
 
 const char *rebase_resolvemsg =
 N_("Resolve all conflicts manually, mark them as resolved with\n"
-"\"git add/rm <conflicted_files>\", then run \"git rebase --continue\".\n"
-"You can instead skip this commit: run \"git rebase --skip\".\n"
-"To abort and get back to the state before \"git rebase\", run "
-"\"git rebase --abort\".");
+"\"igit add/rm <conflicted_files>\", then run \"igit rebase --continue\".\n"
+"You can instead skip this commit: run \"igit rebase --skip\".\n"
+"To abort and get back to the state before \"igit rebase\", run "
+"\"igit rebase --abort\".");
 
 static void print_advice(struct repository *r, int show_hint,
 			 struct replay_opts *opts)
@@ -543,19 +543,19 @@ static void print_advice(struct repository *r, int show_hint,
 		else if (opts->action == REPLAY_PICK)
 			advise_if_enabled(ADVICE_MERGE_CONFLICT,
 					  _("After resolving the conflicts, mark them with\n"
-					    "\"git add/rm <pathspec>\", then run\n"
-					    "\"git cherry-pick --continue\".\n"
-					    "You can instead skip this commit with \"git cherry-pick --skip\".\n"
-					    "To abort and get back to the state before \"git cherry-pick\",\n"
-					    "run \"git cherry-pick --abort\"."));
+					    "\"igit add/rm <pathspec>\", then run\n"
+					    "\"igit cherry-pick --continue\".\n"
+					    "You can instead skip this commit with \"igit cherry-pick --skip\".\n"
+					    "To abort and get back to the state before \"igit cherry-pick\",\n"
+					    "run \"igit cherry-pick --abort\"."));
 		else if (opts->action == REPLAY_REVERT)
 			advise_if_enabled(ADVICE_MERGE_CONFLICT,
 					  _("After resolving the conflicts, mark them with\n"
-					    "\"git add/rm <pathspec>\", then run\n"
-					    "\"git revert --continue\".\n"
-					    "You can instead skip this commit with \"git revert --skip\".\n"
-					    "To abort and get back to the state before \"git revert\",\n"
-					    "run \"git revert --abort\"."));
+					    "\"igit add/rm <pathspec>\", then run\n"
+					    "\"igit revert --continue\".\n"
+					    "You can instead skip this commit with \"igit revert --skip\".\n"
+					    "To abort and get back to the state before \"igit revert\",\n"
+					    "run \"igit revert --abort\"."));
 		else
 			BUG("unexpected pick action in print_advice()");
 	}
@@ -1566,7 +1566,7 @@ static int try_to_commit(struct repository *r,
 	}
 
 	if (write_index_as_tree(&tree, r->index, r->index_file, 0, NULL)) {
-		res = error(_("git write-tree failed to write a tree"));
+		res = error(_("igit write-tree failed to write a tree"));
 		goto out;
 	}
 
@@ -2579,7 +2579,7 @@ static int read_and_refresh_cache(struct repository *r,
 	int index_fd = repo_hold_locked_index(r, &index_lock, 0);
 	if (repo_read_index(r) < 0) {
 		rollback_lock_file(&index_lock);
-		return error(_("git %s: failed to read the index"),
+		return error(_("igit %s: failed to read the index"),
 			action_name(opts));
 	}
 	refresh_index(r->index, REFRESH_QUIET|REFRESH_UNMERGED, NULL, NULL, NULL);
@@ -2587,7 +2587,7 @@ static int read_and_refresh_cache(struct repository *r,
 	if (index_fd >= 0) {
 		if (write_locked_index(r->index, &index_lock,
 				       COMMIT_LOCK | SKIP_IF_UNCHANGED)) {
-			return error(_("git %s: failed to refresh the index"),
+			return error(_("igit %s: failed to refresh the index"),
 				action_name(opts));
 		}
 	}
@@ -3387,12 +3387,12 @@ static int create_seq_dir(struct repository *r)
 		case REPLAY_REVERT:
 			in_progress_error = _("revert is already in progress");
 			in_progress_advice =
-			_("try \"git revert (--continue | %s--abort | --quit)\"");
+			_("try \"igit revert (--continue | %s--abort | --quit)\"");
 			break;
 		case REPLAY_PICK:
 			in_progress_error = _("cherry-pick is already in progress");
 			in_progress_advice =
-			_("try \"git cherry-pick (--continue | %s--abort | --quit)\"");
+			_("try \"igit cherry-pick (--continue | %s--abort | --quit)\"");
 			break;
 		default:
 			BUG("unexpected action in create_seq_dir");
@@ -3585,7 +3585,7 @@ give_advice:
 
 	if (advice_enabled(ADVICE_RESOLVE_CONFLICT)) {
 		advise(_("have you committed already?\n"
-			 "try \"git %s --continue\""),
+			 "try \"igit %s --continue\""),
 			 action == REPLAY_REVERT ? "revert" : "cherry-pick");
 	}
 	return -1;
@@ -3765,7 +3765,7 @@ static int error_with_patch(struct repository *r,
 	struct replay_ctx *ctx = opts->ctx;
 
 	/*
-	 * Write the commit message to be used by "git rebase
+	 * Write the commit message to be used by "igit rebase
 	 * --continue". If a "fixup" or "squash" command has conflicts
 	 * then we will have already written rebase_path_message() in
 	 * error_failed_squash(). If an "edit" command was
@@ -4722,8 +4722,8 @@ static int apply_save_autostash_oid(const char *stash_oid, int attempt_apply)
 			fprintf(stderr,
 				_("%s\n"
 				  "Your changes are safe in the stash.\n"
-				  "You can run \"git stash pop\" or"
-				  " \"git stash drop\" at any time.\n"),
+				  "You can run \"igit stash pop\" or"
+				  " \"igit stash drop\" at any time.\n"),
 				attempt_apply ?
 				_("Applying autostash resulted in conflicts.") :
 				_("Autostash exists; creating a new stash entry."));
@@ -5507,7 +5507,7 @@ int sequencer_pick_revisions(struct repository *r,
 	}
 
 	/*
-	 * If we were called as "git cherry-pick <commit>", just
+	 * If we were called as "igit cherry-pick <commit>", just
 	 * cherry-pick/revert it, set CHERRY_PICK_HEAD /
 	 * REVERT_HEAD, and don't touch the sequencer state.
 	 * This means it is possible to cherry-pick in the middle

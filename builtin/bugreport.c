@@ -19,7 +19,7 @@ static void get_system_info(struct strbuf *sys_info)
 	char *shell = NULL;
 
 	/* get git version from native cmd */
-	strbuf_addstr(sys_info, _("git version:\n"));
+	strbuf_addstr(sys_info, _("igit version:\n"));
 	get_version_info(sys_info, 1);
 
 	/* system call for other version info */
@@ -56,7 +56,7 @@ static void get_populated_hooks(struct strbuf *hook_info, int nongit)
 }
 
 static const char * const bugreport_usage[] = {
-	N_("git bugreport [(-o | --output-directory) <path>]\n"
+	N_("igit bugreport [(-o | --output-directory) <path>]\n"
 	   "              [(-s | --suffix) <format> | --no-suffix]\n"
 	   "              [--diagnose[=<mode>]]"),
 	NULL

@@ -13,7 +13,7 @@
 static int use_stdin;
 static const char *mailmap_file, *mailmap_blob;
 static const char * const check_mailmap_usage[] = {
-N_("git check-mailmap [<options>] <contact>..."),
+N_("igit check-mailmap [<options>] <contact>..."),
 NULL
 };
 

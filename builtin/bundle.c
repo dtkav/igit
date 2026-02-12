@@ -16,14 +16,14 @@
  */
 
 #define BUILTIN_BUNDLE_CREATE_USAGE \
-	N_("git bundle create [-q | --quiet | --progress]\n" \
+	N_("igit bundle create [-q | --quiet | --progress]\n" \
 	   "                  [--version=<version>] <file> <git-rev-list-args>")
 #define BUILTIN_BUNDLE_VERIFY_USAGE \
-	N_("git bundle verify [-q | --quiet] <file>")
+	N_("igit bundle verify [-q | --quiet] <file>")
 #define BUILTIN_BUNDLE_LIST_HEADS_USAGE \
-	N_("git bundle list-heads <file> [<refname>...]")
+	N_("igit bundle list-heads <file> [<refname>...]")
 #define BUILTIN_BUNDLE_UNBUNDLE_USAGE \
-	N_("git bundle unbundle [--progress] <file> [<refname>...]")
+	N_("igit bundle unbundle [--progress] <file> [<refname>...]")
 
 static char const * const builtin_bundle_usage[] = {
 	BUILTIN_BUNDLE_CREATE_USAGE,

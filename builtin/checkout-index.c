@@ -119,7 +119,7 @@ static int checkout_file(struct index_state *index, const char *name, const char
 		return 0;
 
 	if (!state.quiet) {
-		fprintf(stderr, "git checkout-index: %s ", name);
+		fprintf(stderr, "igit checkout-index: %s ", name);
 		if (!has_same_name)
 			fprintf(stderr, "is not in the cache");
 		else if (!is_file)
@@ -187,7 +187,7 @@ static int checkout_all(struct index_state *index, const char *prefix, int prefi
 }
 
 static const char * const builtin_checkout_index_usage[] = {
-	N_("git checkout-index [<options>] [--] [<file>...]"),
+	N_("igit checkout-index [<options>] [--] [<file>...]"),
 	NULL
 };
 
@@ -300,9 +300,9 @@ int cmd_checkout_index(int argc,
 		char *p;
 
 		if (all)
-			die("git checkout-index: don't mix '--all' and explicit filenames");
+			die("igit checkout-index: don't mix '--all' and explicit filenames");
 		if (read_from_stdin)
-			die("git checkout-index: don't mix '--stdin' and explicit filenames");
+			die("igit checkout-index: don't mix '--stdin' and explicit filenames");
 		p = prefix_path(prefix, prefix_length, arg);
 		err |= checkout_file(repo->index, p, prefix);
 		free(p);
@@ -314,7 +314,7 @@ int cmd_checkout_index(int argc,
 		strbuf_getline_fn getline_fn;
 
 		if (all)
-			die("git checkout-index: don't mix '--all' and '--stdin'");
+			die("igit checkout-index: don't mix '--all' and '--stdin'");
 
 		getline_fn = nul_term_line ? strbuf_getline_nul : strbuf_getline_lf;
 		while (getline_fn(&buf, stdin) != EOF) {

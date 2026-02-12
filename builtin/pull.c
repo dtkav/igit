@@ -1,5 +1,5 @@
 /*
- * Builtin "git pull"
+ * Builtin "igit pull"
  *
  * Based on git-pull.sh by Junio C Hamano
  *
@@ -68,7 +68,7 @@ static int parse_opt_rebase(const struct option *opt, const char *arg, int unset
 }
 
 static const char * const pull_usage[] = {
-	N_("git pull [<options>] [<repository> [<refspec>...]]"),
+	N_("igit pull [<options>] [<repository> [<refspec>...]]"),
 	NULL
 };
 
@@ -847,7 +847,7 @@ static void show_advice_pull_non_ff(void)
 		 "  git config pull.rebase true   # rebase\n"
 		 "  git config pull.ff only       # fast-forward only\n"
 		 "\n"
-		 "You can replace \"git config\" with \"git config --global\" to set a default\n"
+		 "You can replace \"igit config\" with \"igit config --global\" to set a default\n"
 		 "preference for all repositories. You can also pass --rebase, --no-rebase,\n"
 		 "or --ff-only on the command line to override the configured default per\n"
 		 "invocation.\n"));

@@ -52,7 +52,7 @@
 #define FAILED_RUN "failed to run %s"
 
 static const char * const builtin_gc_usage[] = {
-	N_("git gc [<options>]"),
+	N_("igit gc [<options>]"),
 	NULL
 };
 
@@ -296,7 +296,7 @@ static int pack_refs_condition(UNUSED struct gc_config *cfg)
 	};
 	bool required;
 
-	/* Check for all refs, similar to 'git refs optimize --all'. */
+	/* Check for all refs, similar to 'igit refs optimize --all'. */
 	string_list_append(optimize_opts.includes, "*");
 
 	if (refs_optimize_required(get_main_ref_store(the_repository),
@@ -957,7 +957,7 @@ int cmd_gc(int argc,
 				fprintf(stderr, _("Auto packing the repository in background for optimum performance.\n"));
 			else
 				fprintf(stderr, _("Auto packing the repository for optimum performance.\n"));
-			fprintf(stderr, _("See \"git help gc\" for manual housekeeping.\n"));
+			fprintf(stderr, _("See \"igit help gc\" for manual housekeeping.\n"));
 		}
 	} else {
 		struct string_list keep_pack = STRING_LIST_INIT_NODUP;
@@ -1074,7 +1074,7 @@ int cmd_gc(int argc,
 
 	if (opts.auto_flag && too_many_loose_objects(cfg.gc_auto_threshold))
 		warning(_("There are too many unreachable loose objects; "
-			"run 'git prune' to remove them."));
+			"run 'igit prune' to remove them."));
 
 	if (!daemonized) {
 		char *path = repo_git_path(the_repository, "gc.log");
@@ -1090,7 +1090,7 @@ out:
 }
 
 static const char *const builtin_maintenance_run_usage[] = {
-	N_("git maintenance run [--auto] [--[no-]quiet] [--task=<task>] [--schedule]"),
+	N_("igit maintenance run [--auto] [--[no-]quiet] [--task=<task>] [--schedule]"),
 	NULL
 };
 
@@ -1397,7 +1397,7 @@ static int pack_loose(struct maintenance_run_opts *opts)
 	pack_proc.out = -1;
 
 	if (start_command(&pack_proc)) {
-		error(_("failed to start 'git pack-objects' process"));
+		error(_("failed to start 'igit pack-objects' process"));
 		return 1;
 	}
 
@@ -1421,7 +1421,7 @@ static int pack_loose(struct maintenance_run_opts *opts)
 	fclose(data.in);
 
 	if (finish_command(&pack_proc)) {
-		error(_("failed to finish 'git pack-objects' process"));
+		error(_("failed to finish 'igit pack-objects' process"));
 		result = 1;
 	}
 
@@ -1493,7 +1493,7 @@ static int multi_pack_index_expire(struct maintenance_run_opts *opts)
 		strvec_push(&child.args, "--progress");
 
 	if (run_command(&child))
-		return error(_("'git multi-pack-index expire' failed"));
+		return error(_("'igit multi-pack-index expire' failed"));
 
 	return 0;
 }
@@ -1554,7 +1554,7 @@ static int multi_pack_index_repack(struct maintenance_run_opts *opts)
 				  (uintmax_t)get_auto_pack_size());
 
 	if (run_command(&child))
-		return error(_("'git multi-pack-index repack' failed"));
+		return error(_("'igit multi-pack-index repack' failed"));
 
 	return 0;
 }
@@ -2102,7 +2102,7 @@ static char *get_maintpath(void)
 }
 
 static char const * const builtin_maintenance_register_usage[] = {
-	"git maintenance register [--config-file <path>]",
+	"igit maintenance register [--config-file <path>]",
 	NULL
 };
 
@@ -2167,7 +2167,7 @@ static int maintenance_register(int argc, const char **argv, const char *prefix,
 }
 
 static char const * const builtin_maintenance_unregister_usage[] = {
-	"git maintenance unregister [--config-file <path>] [--force]",
+	"igit maintenance unregister [--config-file <path>] [--force]",
 	NULL
 };
 
@@ -3407,7 +3407,7 @@ static int update_background_schedule(const struct maintenance_start_opts *opts,
 }
 
 static const char *const builtin_maintenance_start_usage[] = {
-	N_("git maintenance start [--scheduler=<scheduler>]"),
+	N_("igit maintenance start [--scheduler=<scheduler>]"),
 	NULL
 };
 
@@ -3441,7 +3441,7 @@ static int maintenance_start(int argc, const char **argv, const char *prefix,
 }
 
 static const char *const builtin_maintenance_stop_usage[] = {
-	"git maintenance stop",
+	"igit maintenance stop",
 	NULL
 };
 
@@ -3459,7 +3459,7 @@ static int maintenance_stop(int argc, const char **argv, const char *prefix,
 }
 
 static const char *const builtin_maintenance_is_needed_usage[] = {
-	"git maintenance is-needed [--task=<task>] [--schedule]",
+	"igit maintenance is-needed [--task=<task>] [--schedule]",
 	NULL
 };
 
@@ -3519,7 +3519,7 @@ static int maintenance_is_needed(int argc, const char **argv, const char *prefix
 }
 
 static const char *const builtin_maintenance_usage[] = {
-	N_("git maintenance <subcommand> [<options>]"),
+	N_("igit maintenance <subcommand> [<options>]"),
 	NULL,
 };
 

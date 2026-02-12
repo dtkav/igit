@@ -7,7 +7,7 @@
 #include "object-name.h"
 
 static const char builtin_merge_recursive_usage[] =
-	"git %s <base>... -- <head> <remote> ...";
+	"igit %s <base>... -- <head> <remote> ...";
 
 static char *better_branch_name(const char *branch)
 {

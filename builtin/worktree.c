@@ -29,23 +29,23 @@
 #include "quote.h"
 
 #define BUILTIN_WORKTREE_ADD_USAGE \
-	N_("git worktree add [-f] [--detach] [--checkout] [--lock [--reason <string>]]\n" \
+	N_("igit worktree add [-f] [--detach] [--checkout] [--lock [--reason <string>]]\n" \
 	   "                 [--orphan] [(-b | -B) <new-branch>] <path> [<commit-ish>]")
 
 #define BUILTIN_WORKTREE_LIST_USAGE \
-	N_("git worktree list [-v | --porcelain [-z]]")
+	N_("igit worktree list [-v | --porcelain [-z]]")
 #define BUILTIN_WORKTREE_LOCK_USAGE \
-	N_("git worktree lock [--reason <string>] <worktree>")
+	N_("igit worktree lock [--reason <string>] <worktree>")
 #define BUILTIN_WORKTREE_MOVE_USAGE \
-	N_("git worktree move <worktree> <new-path>")
+	N_("igit worktree move <worktree> <new-path>")
 #define BUILTIN_WORKTREE_PRUNE_USAGE \
-	N_("git worktree prune [-n] [-v] [--expire <expire>]")
+	N_("igit worktree prune [-n] [-v] [--expire <expire>]")
 #define BUILTIN_WORKTREE_REMOVE_USAGE \
-	N_("git worktree remove [-f] <worktree>")
+	N_("igit worktree remove [-f] <worktree>")
 #define BUILTIN_WORKTREE_REPAIR_USAGE \
-	N_("git worktree repair [<path>...]")
+	N_("igit worktree repair [<path>...]")
 #define BUILTIN_WORKTREE_UNLOCK_USAGE \
-	N_("git worktree unlock <worktree>")
+	N_("igit worktree unlock <worktree>")
 
 #define WORKTREE_ADD_DWIM_ORPHAN_INFER_TEXT \
 	_("No possible source branch, inferring '--orphan'")
@@ -1294,9 +1294,9 @@ static int move_worktree(int ac, const char **av, const char *prefix,
 }
 
 /*
- * Note, "git status --porcelain" is used to determine if it's safe to
- * delete a whole worktree. "git status" does not ignore user
- * configuration, so if a normal "git status" shows "clean" for the
+ * Note, "igit status --porcelain" is used to determine if it's safe to
+ * delete a whole worktree. "igit status" does not ignore user
+ * configuration, so if a normal "igit status" shows "clean" for the
  * user, then it's ok to remove it.
  *
  * This assumption may be a bad one. We may want to ignore
@@ -1330,7 +1330,7 @@ static void check_clean_worktree(struct worktree *wt,
 	cp.out = -1;
 	ret = start_command(&cp);
 	if (ret)
-		die_errno(_("failed to run 'git status' on '%s'"),
+		die_errno(_("failed to run 'igit status' on '%s'"),
 			  original_path);
 	ret = xread(cp.out, buf, sizeof(buf));
 	if (ret)
@@ -1339,7 +1339,7 @@ static void check_clean_worktree(struct worktree *wt,
 	close(cp.out);
 	ret = finish_command(&cp);
 	if (ret)
-		die_errno(_("failed to run 'git status' on '%s', code %d"),
+		die_errno(_("failed to run 'igit status' on '%s', code %d"),
 			  original_path, ret);
 }
 

@@ -1,5 +1,5 @@
 /*
- * "git fetch"
+ * "igit fetch"
  */
 
 #define USE_THE_REPOSITORY_VARIABLE
@@ -45,10 +45,10 @@
 #define FORCED_UPDATES_DELAY_WARNING_IN_MS (10 * 1000)
 
 static const char * const builtin_fetch_usage[] = {
-	N_("git fetch [<options>] [<repository> [<refspec>...]]"),
-	N_("git fetch [<options>] <group>"),
-	N_("git fetch --multiple [<options>] [(<repository>|<group>)...]"),
-	N_("git fetch --all [<options>]"),
+	N_("igit fetch [<options>] [<repository> [<refspec>...]]"),
+	N_("igit fetch [<options>] <group>"),
+	N_("igit fetch --multiple [<options>] [(<repository>|<group>)...]"),
+	N_("igit fetch --all [<options>]"),
 	NULL
 };
 
@@ -181,7 +181,7 @@ static int parse_refmap_arg(const struct option *opt, const char *arg, int unset
 	BUG_ON_OPT_NEG(unset);
 
 	/*
-	 * "git fetch --refmap='' origin foo"
+	 * "igit fetch --refmap='' origin foo"
 	 * can be used to tell the command not to store anywhere
 	 */
 	refspec_append(opt->value, arg);
@@ -232,10 +232,10 @@ static void add_merge_config(struct ref **head,
 		/*
 		 * Not fetched to a remote-tracking branch?  We need to fetch
 		 * it anyway to allow this branch's "branch.$name.merge"
-		 * to be honored by 'git pull', but we do not have to
+		 * to be honored by 'igit pull', but we do not have to
 		 * fail if branch.$name.merge is misconfigured to point
 		 * at a nonexisting branch.  If we were indeed called by
-		 * 'git pull', it will notice the misconfiguration because
+		 * 'igit pull', it will notice the misconfiguration because
 		 * there is no entry in the resulting FETCH_HEAD marked
 		 * for merging.
 		 */
@@ -1093,10 +1093,10 @@ static void close_fetch_head(struct fetch_head *fetch_head)
 static const char warn_show_forced_updates[] =
 N_("fetch normally indicates which branches had a forced update,\n"
    "but that check has been disabled; to re-enable, use '--show-forced-updates'\n"
-   "flag or run 'git config fetch.showForcedUpdates true'");
+   "flag or run 'igit config fetch.showForcedUpdates true'");
 static const char warn_time_show_forced_updates[] =
 N_("it took %.2f seconds to check forced updates; you can use\n"
-   "'--no-show-forced-updates' or run 'git config fetch.showForcedUpdates false'\n"
+   "'--no-show-forced-updates' or run 'igit config fetch.showForcedUpdates false'\n"
    "to avoid this check\n");
 
 static int store_updated_refs(struct display_state *display_state,
@@ -1533,10 +1533,10 @@ static const char *strip_refshead(const char *name){
 static void set_head_advice_msg(const char *remote, const char *head_name)
 {
 	const char message_advice_set_head[] =
-	N_("Run 'git remote set-head %s %s' to follow the change, or set\n"
+	N_("Run 'igit remote set-head %s %s' to follow the change, or set\n"
 	   "'remote.%s.followRemoteHEAD' configuration option to a different value\n"
 	   "if you do not want to see this message. Specifically running\n"
-	   "'git config set remote.%s.followRemoteHEAD warn-if-not-branch-%s'\n"
+	   "'igit config set remote.%s.followRemoteHEAD warn-if-not-branch-%s'\n"
 	   "will disable the warning until the remote changes HEAD to something else.");
 
 	advise_if_enabled(ADVICE_FETCH_SET_HEAD_WARN, _(message_advice_set_head),
@@ -1669,7 +1669,7 @@ static void ref_transaction_rejection_handler(const char *refname,
 	} else if (err == REF_TRANSACTION_ERROR_NAME_CONFLICT &&
 		   !data->conflict_msg_shown) {
 		error(_("some local refs could not be updated; try running\n"
-			" 'git remote prune %s' to remove any old, conflicting "
+			" 'igit remote prune %s' to remove any old, conflicting "
 			"branches"), data->remote_name);
 		data->conflict_msg_shown = true;
 	} else {

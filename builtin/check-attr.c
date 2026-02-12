@@ -15,8 +15,8 @@ static int cached_attrs;
 static int stdin_paths;
 static char *source;
 static const char * const check_attr_usage[] = {
-N_("git check-attr [--source <tree-ish>] [-a | --all | <attr>...] [--] <pathname>..."),
-N_("git check-attr --stdin [-z] [--source <tree-ish>] [-a | --all | <attr>...]"),
+N_("igit check-attr [--source <tree-ish>] [-a | --all | <attr>...] [--] <pathname>..."),
+N_("igit check-attr --stdin [-z] [--source <tree-ish>] [-a | --all | <attr>...]"),
 NULL
 };
 

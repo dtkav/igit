@@ -67,9 +67,9 @@ int cmd_hash_object(int argc,
 		    struct repository *repo UNUSED)
 {
 	static const char * const hash_object_usage[] = {
-		N_("git hash-object [-t <type>] [-w] [--path=<file> | --no-filters]\n"
+		N_("igit hash-object [-t <type>] [-w] [--path=<file> | --no-filters]\n"
 		   "                [--stdin [--literally]] [--] <file>..."),
-		N_("git hash-object [-t <type>] [-w] --stdin-paths [--no-filters]"),
+		N_("igit hash-object [-t <type>] [-w] --stdin-paths [--no-filters]"),
 		NULL
 	};
 	const char *type = blob_type;

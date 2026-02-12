@@ -1125,7 +1125,7 @@ static enum protocol parse_connect_url(const char *url_orig, char **ret_host,
 		path = strchr(end, separator);
 
 	if (!path || !*path)
-		die(_("no path specified; see 'git help pull' for valid url syntax"));
+		die(_("no path specified; see 'igit help pull' for valid url syntax"));
 
 	/*
 	 * null-terminate hostname and point path to ~ for URL's like this:

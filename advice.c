@@ -95,7 +95,7 @@ static struct {
 
 static const char turn_off_instructions[] =
 N_("\n"
-   "Disable this message with \"git config set advice.%s false\"");
+   "Disable this message with \"igit config set advice.%s false\"");
 
 static void vadvise(const char *advice, int display_instructions,
 		    const char *key, va_list params)
@@ -309,6 +309,6 @@ void advise_on_moving_dirty_path(struct string_list *pathspec_list)
 
 	advise_if_enabled(ADVICE_UPDATE_SPARSE_PATH,
 			  _("To correct the sparsity of these paths, do the following:\n"
-			    "* Use \"git add --sparse <paths>\" to update the index\n"
-			    "* Use \"git sparse-checkout reapply\" to apply the sparsity rules"));
+			    "* Use \"igit add --sparse <paths>\" to update the index\n"
+			    "* Use \"igit sparse-checkout reapply\" to apply the sparsity rules"));
 }

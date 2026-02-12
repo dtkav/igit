@@ -17,8 +17,8 @@
 #include "utf8.h"
 
 static const char *const repo_usage[] = {
-	"git repo info [--format=(keyvalue|nul) | -z] [--all | <key>...]",
-	"git repo structure [--format=(table|keyvalue|nul) | -z]",
+	"igit repo info [--format=(keyvalue|nul) | -z] [--all | <key>...]",
+	"igit repo structure [--format=(table|keyvalue|nul) | -z]",
 	NULL
 };
 

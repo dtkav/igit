@@ -214,10 +214,10 @@ static void consume_shallow_list(struct fetch_pack_args *args,
 				continue;
 			if (starts_with(reader->line, "unshallow "))
 				continue;
-			die(_("git fetch-pack: expected shallow list"));
+			die(_("igit fetch-pack: expected shallow list"));
 		}
 		if (reader->status != PACKET_READ_FLUSH)
-			die(_("git fetch-pack: expected a flush packet after shallow list"));
+			die(_("igit fetch-pack: expected a flush packet after shallow list"));
 	}
 }
 
@@ -228,7 +228,7 @@ static enum ack_type get_ack(struct packet_reader *reader,
 	const char *arg;
 
 	if (packet_reader_read(reader) != PACKET_READ_NORMAL)
-		die(_("git fetch-pack: expected ACK/NAK, got a flush packet"));
+		die(_("igit fetch-pack: expected ACK/NAK, got a flush packet"));
 	len = reader->pktlen;
 
 	if (!strcmp(reader->line, "NAK"))
@@ -248,7 +248,7 @@ static enum ack_type get_ack(struct packet_reader *reader,
 			return ACK;
 		}
 	}
-	die(_("git fetch-pack: expected ACK/NAK, got '%s'"), reader->line);
+	die(_("igit fetch-pack: expected ACK/NAK, got '%s'"), reader->line);
 }
 
 static void send_request(struct fetch_pack_args *args,
@@ -1222,7 +1222,7 @@ static struct ref *do_fetch_pack(struct fetch_pack_args *args,
 		alternate_shallow_file = NULL;
 	if (get_pack(args, fd, pack_lockfiles, NULL, sought, nr_sought,
 		     &fsck_options.gitmodules_found))
-		die(_("git fetch-pack: fetch failed."));
+		die(_("igit fetch-pack: fetch failed."));
 	if (fsck_finish(&fsck_options))
 		die("fsck failed");
 
@@ -1634,7 +1634,7 @@ static void do_check_stateless_delimiter(int stateless_rpc,
 					 struct packet_reader *reader)
 {
 	check_stateless_delimiter(stateless_rpc, reader,
-				  _("git fetch-pack: expected response end packet"));
+				  _("igit fetch-pack: expected response end packet"));
 }
 
 static struct ref *do_fetch_pack_v2(struct fetch_pack_args *args,
@@ -1782,7 +1782,7 @@ static struct ref *do_fetch_pack_v2(struct fetch_pack_args *args,
 			if (get_pack(args, fd, pack_lockfiles,
 				     packfile_uris.nr ? &index_pack_args : NULL,
 				     sought, nr_sought, &fsck_options.gitmodules_found))
-				die(_("git fetch-pack: fetch failed."));
+				die(_("igit fetch-pack: fetch failed."));
 			do_check_stateless_delimiter(args->stateless_rpc, &reader);
 
 			state = FETCH_DONE;

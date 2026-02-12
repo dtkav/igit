@@ -511,11 +511,11 @@ static const char upstream_advice[] =
 N_("\n"
 "If you are planning on basing your work on an upstream\n"
 "branch that already exists at the remote, you may need to\n"
-"run \"git fetch\" to retrieve it.\n"
+"run \"igit fetch\" to retrieve it.\n"
 "\n"
 "If you are planning to push out a new local branch that\n"
 "will track its remote counterpart, you may want to use\n"
-"\"git push -u\" to set the upstream config as you push.");
+"\"igit push -u\" to set the upstream config as you push.");
 
 /**
  * DWIMs a user-provided ref to determine the starting point for a
@@ -685,8 +685,8 @@ static int submodule_create_branch(struct repository *r,
 	prepare_other_repo_env(&child.env, r->gitdir);
 	/*
 	 * submodule_create_branch() is indirectly invoked by "git
-	 * branch", but we cannot invoke "git branch" in the child
-	 * process. "git branch" accepts a branch name and start point,
+	 * branch", but we cannot invoke "igit branch" in the child
+	 * process. "igit branch" accepts a branch name and start point,
 	 * where the start point is assumed to provide both the OID
 	 * (start_oid) and the branch to use for tracking
 	 * (tracking_name). But when recursing through submodules,
@@ -718,9 +718,9 @@ static int submodule_create_branch(struct repository *r,
 		strvec_push(&child.args, "--track=inherit");
 		break;
 	case BRANCH_TRACK_UNSPECIFIED:
-		/* Default for "git checkout". Do not pass --track. */
+		/* Default for "igit checkout". Do not pass --track. */
 	case BRANCH_TRACK_REMOTE:
-		/* Default for "git branch". Do not pass --track. */
+		/* Default for "igit branch". Do not pass --track. */
 	case BRANCH_TRACK_SIMPLE:
 		/* Config-driven only. Do not pass --track. */
 		break;
@@ -801,7 +801,7 @@ void create_branches_recursively(struct repository *r, const char *name,
 		goto out;
 	/*
 	 * NEEDSWORK If tracking was set up in the superproject but not the
-	 * submodule, users might expect "git branch --recurse-submodules" to
+	 * submodule, users might expect "igit branch --recurse-submodules" to
 	 * fail or give a warning, but this is not yet implemented because it is
 	 * tedious to determine whether or not tracking was set up in the
 	 * superproject.

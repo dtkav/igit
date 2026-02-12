@@ -16,7 +16,7 @@
 #include "revision.h"
 
 static const char diff_files_usage[] =
-"git diff-files [-q] [-0 | -1 | -2 | -3 | -c | --cc] [<common-diff-options>] [<path>...]"
+"igit diff-files [-q] [-0 | -1 | -2 | -3 | -c | --cc] [<common-diff-options>] [<path>...]"
 "\n"
 COMMON_DIFF_OPTIONS_HELP;
 

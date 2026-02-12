@@ -297,7 +297,7 @@ int cmd_credential_cache_daemon(int argc,
 	const char *socket_path;
 	int ignore_sighup = 0;
 	static const char *usage[] = {
-		"git credential-cache--daemon [--debug] <socket-path>",
+		"igit credential-cache--daemon [--debug] <socket-path>",
 		NULL
 	};
 	int debug = 0;
@@ -340,7 +340,7 @@ const char *prefix,
 struct repository *repo UNUSED)
 {
 	const char * const usage[] = {
-		"git credential-cache--daemon [--debug] <socket-path>",
+		"igit credential-cache--daemon [--debug] <socket-path>",
 		"",
 		"credential-cache--daemon is disabled in this build of Git",
 		NULL

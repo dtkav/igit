@@ -1,5 +1,5 @@
 /*
- * "git replay" builtin command
+ * "igit replay" builtin command
  */
 
 #define USE_THE_REPOSITORY_VARIABLE

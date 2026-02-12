@@ -1,5 +1,5 @@
 /*
- * Builtin "git tag"
+ * Builtin "igit tag"
  *
  * Copyright (c) 2007 Kristian Høgsberg <krh@redhat.com>,
  *                    Carlos Rica <jasampler@gmail.com>
@@ -35,15 +35,15 @@
 #include "trailer.h"
 
 static const char * const git_tag_usage[] = {
-	N_("git tag [-a | -s | -u <key-id>] [-f] [-m <msg> | -F <file>] [-e]\n"
+	N_("igit tag [-a | -s | -u <key-id>] [-f] [-m <msg> | -F <file>] [-e]\n"
 	   "        [(--trailer <token>[(=|:)<value>])...]\n"
 	   "        <tagname> [<commit> | <object>]"),
-	N_("git tag -d <tagname>..."),
-	N_("git tag [-n[<num>]] -l [--contains <commit>] [--no-contains <commit>]\n"
+	N_("igit tag -d <tagname>..."),
+	N_("igit tag [-n[<num>]] -l [--contains <commit>] [--no-contains <commit>]\n"
 	   "        [--points-at <object>] [--column[=<options>] | --no-column]\n"
 	   "        [--create-reflog] [--sort=<key>] [--format=<format>]\n"
 	   "        [--merged <commit>] [--no-merged <commit>] [<pattern>...]"),
-	N_("git tag -v [--format=<format>] <tagname>..."),
+	N_("igit tag -v [--format=<format>] <tagname>..."),
 	NULL
 };
 
@@ -596,7 +596,7 @@ int cmd_tag(int argc,
 			memset(&copts, 0, sizeof(copts));
 			copts.padding = 2;
 			if (run_column_filter(colopts, &copts))
-				die(_("could not start 'git column'"));
+				die(_("could not start 'igit column'"));
 		}
 		filter.name_patterns = argv;
 		ret = list_tags(&filter, sorting, &format);

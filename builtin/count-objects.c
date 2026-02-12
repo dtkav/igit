@@ -1,5 +1,5 @@
 /*
- * Builtin "git count-objects".
+ * Builtin "igit count-objects".
  *
  * Copyright (c) 2006 Junio C Hamano
  */
@@ -90,7 +90,7 @@ static int print_alternate(struct odb_source *alternate, void *data UNUSED)
 }
 
 static char const * const count_objects_usage[] = {
-	"git count-objects [-v] [-H | --human-readable]",
+	"igit count-objects [-v] [-H | --human-readable]",
 	NULL
 };
 

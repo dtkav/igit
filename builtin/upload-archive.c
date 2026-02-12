@@ -11,10 +11,10 @@
 #include "strvec.h"
 
 static const char upload_archive_usage[] =
-	"git upload-archive <repository>";
+	"igit upload-archive <repository>";
 
 static const char deadchild[] =
-"git upload-archive: archiver died with error";
+"igit upload-archive: archiver died with error";
 
 #define MAX_ARGS (64)
 

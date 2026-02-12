@@ -8,9 +8,9 @@
 #include "strbuf.h"
 
 static const char * const git_symbolic_ref_usage[] = {
-	N_("git symbolic-ref [-m <reason>] <name> <ref>"),
-	N_("git symbolic-ref [-q] [--short] [--no-recurse] <name>"),
-	N_("git symbolic-ref --delete [-q] <name>"),
+	N_("igit symbolic-ref [-m <reason>] <name> <ref>"),
+	N_("igit symbolic-ref [-q] [--short] [--no-recurse] <name>"),
+	N_("igit symbolic-ref --delete [-q] <name>"),
 	NULL
 };
 

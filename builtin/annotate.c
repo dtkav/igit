@@ -1,5 +1,5 @@
 /*
- * "git annotate" builtin alias
+ * "igit annotate" builtin alias
  *
  * Copyright (C) 2006 Ryan Anderson
  */

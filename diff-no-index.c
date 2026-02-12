@@ -347,7 +347,7 @@ static int fixup_paths(const char **path, struct strbuf *replacement)
 }
 
 static const char * const diff_no_index_usage[] = {
-	N_("git diff --no-index [<options>] <path> <path> [<pathspec>...]"),
+	N_("igit diff --no-index [<options>] <path> <path> [<pathspec>...]"),
 	NULL
 };
 

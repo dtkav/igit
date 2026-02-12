@@ -8,7 +8,7 @@
 #include "column.h"
 
 static const char * const builtin_column_usage[] = {
-	N_("git column [<options>]"),
+	N_("igit column [<options>]"),
 	NULL
 };
 static unsigned int colopts;

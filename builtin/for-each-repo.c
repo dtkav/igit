@@ -9,7 +9,7 @@
 #include "string-list.h"
 
 static const char * const for_each_repo_usage[] = {
-	N_("git for-each-repo --config=<config> [--] <arguments>"),
+	N_("igit for-each-repo --config=<config> [--] <arguments>"),
 	NULL
 };
 

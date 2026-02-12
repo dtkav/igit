@@ -39,7 +39,7 @@ int cmd_diff_pairs(int argc, const char **argv, const char *prefix,
 	int ret;
 
 	const char * const builtin_diff_pairs_usage[] = {
-		N_("git diff-pairs -z [<diff-options>]"),
+		N_("igit diff-pairs -z [<diff-options>]"),
 		NULL
 	};
 	struct option builtin_diff_pairs_options[] = {

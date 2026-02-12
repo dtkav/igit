@@ -11,16 +11,16 @@
 #include "refs/refs-internal.h"
 
 #define REFS_MIGRATE_USAGE \
-	N_("git refs migrate --ref-format=<format> [--no-reflog] [--dry-run]")
+	N_("igit refs migrate --ref-format=<format> [--no-reflog] [--dry-run]")
 
 #define REFS_VERIFY_USAGE \
-	N_("git refs verify [--strict] [--verbose]")
+	N_("igit refs verify [--strict] [--verbose]")
 
 #define REFS_EXISTS_USAGE \
-	N_("git refs exists <ref>")
+	N_("igit refs exists <ref>")
 
 #define REFS_OPTIMIZE_USAGE \
-	N_("git refs optimize " PACK_REFS_OPTS)
+	N_("igit refs optimize " PACK_REFS_OPTS)
 
 static int cmd_refs_migrate(int argc, const char **argv, const char *prefix,
 			    struct repository *repo UNUSED)
@@ -95,7 +95,7 @@ static int cmd_refs_verify(int argc, const char **argv, const char *prefix,
 
 	argc = parse_options(argc, argv, prefix, options, verify_usage, 0);
 	if (argc)
-		usage(_("'git refs verify' takes no arguments"));
+		usage(_("'igit refs verify' takes no arguments"));
 
 	repo_config(the_repository, git_fsck_config, &fsck_refs_options);
 	prepare_repo_settings(the_repository);
@@ -114,7 +114,7 @@ static int cmd_refs_list(int argc, const char **argv, const char *prefix,
 			   struct repository *repo)
 {
 	static char const * const refs_list_usage[] = {
-		N_("git refs list " COMMON_USAGE_FOR_EACH_REF),
+		N_("igit refs list " COMMON_USAGE_FOR_EACH_REF),
 		NULL
 	};
 
@@ -140,7 +140,7 @@ static int cmd_refs_exists(int argc, const char **argv, const char *prefix,
 
 	argc = parse_options(argc, argv, prefix, options, exists_usage, 0);
 	if (argc != 1)
-		die(_("'git refs exists' requires a reference"));
+		die(_("'igit refs exists' requires a reference"));
 
 	ref = *argv++;
 	if (refs_read_raw_ref(get_main_ref_store(the_repository), ref,
@@ -182,7 +182,7 @@ int cmd_refs(int argc,
 	const char * const refs_usage[] = {
 		REFS_MIGRATE_USAGE,
 		REFS_VERIFY_USAGE,
-		"git refs list " COMMON_USAGE_FOR_EACH_REF,
+		"igit refs list " COMMON_USAGE_FOR_EACH_REF,
 		REFS_EXISTS_USAGE,
 		REFS_OPTIMIZE_USAGE,
 		NULL,

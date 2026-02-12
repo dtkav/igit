@@ -1,5 +1,5 @@
 /*
- * Builtin "git notes"
+ * Builtin "igit notes"
  *
  * Copyright (c) 2010 Johan Herland <johan@herland.net>
  *
@@ -32,71 +32,71 @@
 
 static const char *separator = "\n";
 static const char * const git_notes_usage[] = {
-	N_("git notes [--ref <notes-ref>] [list [<object>]]"),
-	N_("git notes [--ref <notes-ref>] add [-f] [--allow-empty] [--[no-]separator|--separator=<paragraph-break>] [--[no-]stripspace] [-m <msg> | -F <file> | (-c | -C) <object>] [<object>] [-e]"),
-	N_("git notes [--ref <notes-ref>] copy [-f] <from-object> <to-object>"),
-	N_("git notes [--ref <notes-ref>] append [--allow-empty] [--[no-]separator|--separator=<paragraph-break>] [--[no-]stripspace] [-m <msg> | -F <file> | (-c | -C) <object>] [<object>] [-e]"),
-	N_("git notes [--ref <notes-ref>] edit [--allow-empty] [<object>]"),
-	N_("git notes [--ref <notes-ref>] show [<object>]"),
-	N_("git notes [--ref <notes-ref>] merge [-v | -q] [-s <strategy>] <notes-ref>"),
-	"git notes merge --commit [-v | -q]",
-	"git notes merge --abort [-v | -q]",
-	N_("git notes [--ref <notes-ref>] remove [<object>...]"),
-	N_("git notes [--ref <notes-ref>] prune [-n] [-v]"),
-	N_("git notes [--ref <notes-ref>] get-ref"),
+	N_("igit notes [--ref <notes-ref>] [list [<object>]]"),
+	N_("igit notes [--ref <notes-ref>] add [-f] [--allow-empty] [--[no-]separator|--separator=<paragraph-break>] [--[no-]stripspace] [-m <msg> | -F <file> | (-c | -C) <object>] [<object>] [-e]"),
+	N_("igit notes [--ref <notes-ref>] copy [-f] <from-object> <to-object>"),
+	N_("igit notes [--ref <notes-ref>] append [--allow-empty] [--[no-]separator|--separator=<paragraph-break>] [--[no-]stripspace] [-m <msg> | -F <file> | (-c | -C) <object>] [<object>] [-e]"),
+	N_("igit notes [--ref <notes-ref>] edit [--allow-empty] [<object>]"),
+	N_("igit notes [--ref <notes-ref>] show [<object>]"),
+	N_("igit notes [--ref <notes-ref>] merge [-v | -q] [-s <strategy>] <notes-ref>"),
+	"igit notes merge --commit [-v | -q]",
+	"igit notes merge --abort [-v | -q]",
+	N_("igit notes [--ref <notes-ref>] remove [<object>...]"),
+	N_("igit notes [--ref <notes-ref>] prune [-n] [-v]"),
+	N_("igit notes [--ref <notes-ref>] get-ref"),
 	NULL
 };
 
 static const char * const git_notes_list_usage[] = {
-	N_("git notes [list [<object>]]"),
+	N_("igit notes [list [<object>]]"),
 	NULL
 };
 
 static const char * const git_notes_add_usage[] = {
-	N_("git notes add [<options>] [<object>]"),
+	N_("igit notes add [<options>] [<object>]"),
 	NULL
 };
 
 static const char * const git_notes_copy_usage[] = {
-	N_("git notes copy [<options>] <from-object> <to-object>"),
-	N_("git notes copy --stdin [<from-object> <to-object>]..."),
+	N_("igit notes copy [<options>] <from-object> <to-object>"),
+	N_("igit notes copy --stdin [<from-object> <to-object>]..."),
 	NULL
 };
 
 static const char * const git_notes_append_usage[] = {
-	N_("git notes append [<options>] [<object>]"),
+	N_("igit notes append [<options>] [<object>]"),
 	NULL
 };
 
 static const char * const git_notes_edit_usage[] = {
-	N_("git notes edit [<object>]"),
+	N_("igit notes edit [<object>]"),
 	NULL
 };
 
 static const char * const git_notes_show_usage[] = {
-	N_("git notes show [<object>]"),
+	N_("igit notes show [<object>]"),
 	NULL
 };
 
 static const char * const git_notes_merge_usage[] = {
-	N_("git notes merge [<options>] <notes-ref>"),
-	N_("git notes merge --commit [<options>]"),
-	N_("git notes merge --abort [<options>]"),
+	N_("igit notes merge [<options>] <notes-ref>"),
+	N_("igit notes merge --commit [<options>]"),
+	N_("igit notes merge --abort [<options>]"),
 	NULL
 };
 
 static const char * const git_notes_remove_usage[] = {
-	N_("git notes remove [<object>]"),
+	N_("igit notes remove [<object>]"),
 	NULL
 };
 
 static const char * const git_notes_prune_usage[] = {
-	N_("git notes prune [<options>]"),
+	N_("igit notes prune [<options>]"),
 	NULL
 };
 
 static const char * const git_notes_get_ref_usage[] = {
-	"git notes get-ref",
+	"igit notes get-ref",
 	NULL
 };
 
@@ -166,7 +166,7 @@ static void write_commented_object(int fd, const struct object_id *object)
 	struct strbuf buf = STRBUF_INIT;
 	struct strbuf cbuf = STRBUF_INIT;
 
-	/* Invoke "git show --stat --no-notes $object" */
+	/* Invoke "igit show --stat --no-notes $object" */
 	strvec_pushl(&show.args, "show", "--stat", "--no-notes",
 		     oid_to_hex(object), NULL);
 	show.no_stdin = 1;
@@ -363,7 +363,7 @@ static int notes_copy_from_stdin(int force, const char *rewrite_cmd)
 	struct notes_rewrite_cfg *c = NULL;
 	struct notes_tree *t = NULL;
 	int ret = 0;
-	const char *msg = "Notes added by 'git notes copy'";
+	const char *msg = "Notes added by 'igit notes copy'";
 
 	if (rewrite_cmd) {
 		c = init_copy_notes_for_rewrite(rewrite_cmd);
@@ -561,13 +561,13 @@ static int add(int argc, const char **argv, const char *prefix,
 		if (add_note(t, &object, &new_note, combine_notes_overwrite))
 			BUG("combine_notes_overwrite failed");
 		commit_notes(the_repository, t,
-			     "Notes added by 'git notes add'");
+			     "Notes added by 'igit notes add'");
 	} else {
 		fprintf(stderr, _("Removing note for object %s\n"),
 			oid_to_hex(&object));
 		remove_note(t, object.hash);
 		commit_notes(the_repository, t,
-			     "Notes removed by 'git notes add'");
+			     "Notes removed by 'igit notes add'");
 	}
 
 	free_note_data(&d);
@@ -647,7 +647,7 @@ static int copy(int argc, const char **argv, const char *prefix,
 	if (add_note(t, &object, from_note, combine_notes_overwrite))
 		BUG("combine_notes_overwrite failed");
 	commit_notes(the_repository, t,
-		     "Notes added by 'git notes copy'");
+		     "Notes added by 'igit notes copy'");
 out:
 	free_notes(t);
 	return retval;
@@ -705,7 +705,7 @@ static int append_edit(int argc, const char **argv, const char *prefix,
 		if (edit)
 			fprintf(stderr, _("The -m/-F/-c/-C options have been "
 				"deprecated for the 'edit' subcommand.\n"
-				"Please use 'git notes add -f -m/-F/-c/-C' "
+				"Please use 'igit notes add -f -m/-F/-c/-C' "
 				"instead.\n"));
 	}
 
@@ -742,12 +742,12 @@ static int append_edit(int argc, const char **argv, const char *prefix,
 		write_note_data(&d, &new_note);
 		if (add_note(t, &object, &new_note, combine_notes_overwrite))
 			BUG("combine_notes_overwrite failed");
-		logmsg = xstrfmt("Notes added by 'git notes %s'", argv[0]);
+		logmsg = xstrfmt("Notes added by 'igit notes %s'", argv[0]);
 	} else {
 		fprintf(stderr, _("Removing note for object %s\n"),
 			oid_to_hex(&object));
 		remove_note(t, object.hash);
-		logmsg = xstrfmt("Notes removed by 'git notes %s'", argv[0]);
+		logmsg = xstrfmt("Notes removed by 'igit notes %s'", argv[0]);
 	}
 	commit_notes(the_repository, t, logmsg);
 
@@ -810,7 +810,7 @@ static int merge_abort(struct notes_merge_options *o)
 	if (refs_delete_ref(get_main_ref_store(the_repository), NULL, "NOTES_MERGE_REF", NULL, REF_NO_DEREF))
 		ret += error(_("failed to delete ref NOTES_MERGE_REF"));
 	if (notes_merge_abort(o))
-		ret += error(_("failed to remove 'git notes merge' worktree"));
+		ret += error(_("failed to remove 'igit notes merge' worktree"));
 	return ret;
 }
 
@@ -1002,8 +1002,8 @@ static int merge(int argc, const char **argv, const char *prefix,
 
 		path = repo_git_path(the_repository, NOTES_MERGE_WORKTREE);
 		fprintf(stderr, _("Automatic notes merge failed. Fix conflicts in %s "
-				  "and commit the result with 'git notes merge --commit', "
-				  "or abort the merge with 'git notes merge --abort'.\n"),
+				  "and commit the result with 'igit notes merge --commit', "
+				  "or abort the merge with 'igit notes merge --abort'.\n"),
 			path);
 		free(path);
 	}
@@ -1070,7 +1070,7 @@ static int remove_cmd(int argc, const char **argv, const char *prefix,
 	}
 	if (!retval)
 		commit_notes(the_repository, t,
-			     "Notes removed by 'git notes remove'");
+			     "Notes removed by 'igit notes remove'");
 	free_notes(t);
 	return retval;
 }
@@ -1100,7 +1100,7 @@ static int prune(int argc, const char **argv, const char *prefix,
 		(show_only ? NOTES_PRUNE_VERBOSE|NOTES_PRUNE_DRYRUN : 0) );
 	if (!show_only)
 		commit_notes(the_repository, t,
-			     "Notes removed by 'git notes prune'");
+			     "Notes removed by 'igit notes prune'");
 	free_notes(t);
 	return 0;
 }

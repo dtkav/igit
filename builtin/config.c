@@ -16,49 +16,49 @@
 #include "worktree.h"
 
 static const char *const builtin_config_usage[] = {
-	N_("git config list [<file-option>] [<display-option>] [--includes]"),
-	N_("git config get [<file-option>] [<display-option>] [--includes] [--all] [--regexp] [--value=<pattern>] [--fixed-value] [--default=<default>] [--url=<url>] <name>"),
-	N_("git config set [<file-option>] [--type=<type>] [--all] [--value=<pattern>] [--fixed-value] <name> <value>"),
-	N_("git config unset [<file-option>] [--all] [--value=<pattern>] [--fixed-value] <name>"),
-	N_("git config rename-section [<file-option>] <old-name> <new-name>"),
-	N_("git config remove-section [<file-option>] <name>"),
-	N_("git config edit [<file-option>]"),
-	N_("git config [<file-option>] --get-colorbool <name> [<stdout-is-tty>]"),
+	N_("igit config list [<file-option>] [<display-option>] [--includes]"),
+	N_("igit config get [<file-option>] [<display-option>] [--includes] [--all] [--regexp] [--value=<pattern>] [--fixed-value] [--default=<default>] [--url=<url>] <name>"),
+	N_("igit config set [<file-option>] [--type=<type>] [--all] [--value=<pattern>] [--fixed-value] <name> <value>"),
+	N_("igit config unset [<file-option>] [--all] [--value=<pattern>] [--fixed-value] <name>"),
+	N_("igit config rename-section [<file-option>] <old-name> <new-name>"),
+	N_("igit config remove-section [<file-option>] <name>"),
+	N_("igit config edit [<file-option>]"),
+	N_("igit config [<file-option>] --get-colorbool <name> [<stdout-is-tty>]"),
 	NULL
 };
 
 static const char *const builtin_config_list_usage[] = {
-	N_("git config list [<file-option>] [<display-option>] [--includes]"),
+	N_("igit config list [<file-option>] [<display-option>] [--includes]"),
 	NULL
 };
 
 static const char *const builtin_config_get_usage[] = {
-	N_("git config get [<file-option>] [<display-option>] [--includes] [--all] [--regexp=<regexp>] [--value=<pattern>] [--fixed-value] [--default=<default>] <name>"),
+	N_("igit config get [<file-option>] [<display-option>] [--includes] [--all] [--regexp=<regexp>] [--value=<pattern>] [--fixed-value] [--default=<default>] <name>"),
 	NULL
 };
 
 static const char *const builtin_config_set_usage[] = {
-	N_("git config set [<file-option>] [--type=<type>] [--comment=<message>] [--all] [--value=<pattern>] [--fixed-value] <name> <value>"),
+	N_("igit config set [<file-option>] [--type=<type>] [--comment=<message>] [--all] [--value=<pattern>] [--fixed-value] <name> <value>"),
 	NULL
 };
 
 static const char *const builtin_config_unset_usage[] = {
-	N_("git config unset [<file-option>] [--all] [--value=<pattern>] [--fixed-value] <name>"),
+	N_("igit config unset [<file-option>] [--all] [--value=<pattern>] [--fixed-value] <name>"),
 	NULL
 };
 
 static const char *const builtin_config_rename_section_usage[] = {
-	N_("git config rename-section [<file-option>] <old-name> <new-name>"),
+	N_("igit config rename-section [<file-option>] <old-name> <new-name>"),
 	NULL
 };
 
 static const char *const builtin_config_remove_section_usage[] = {
-	N_("git config remove-section [<file-option>] <name>"),
+	N_("igit config remove-section [<file-option>] <name>"),
 	NULL
 };
 
 static const char *const builtin_config_edit_usage[] = {
-	N_("git config edit [<file-option>]"),
+	N_("igit config edit [<file-option>]"),
 	NULL
 };
 
@@ -829,7 +829,7 @@ static void location_options_init(struct config_location_options *opts,
 			      "working trees unless the config\n"
 			      "extension worktreeConfig is enabled. "
 			      "Please read \"CONFIGURATION FILE\"\n"
-			      "section in \"git help worktree\" for details"));
+			      "section in \"igit help worktree\" for details"));
 		else
 			opts->source.file = opts->file_to_free =
 				repo_git_path(the_repository, "config");

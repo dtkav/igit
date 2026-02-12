@@ -1,5 +1,5 @@
 /*
- * Builtin "git grep"
+ * Builtin "igit grep"
  *
  * Copyright (c) 2006 Junio C Hamano
  */
@@ -37,7 +37,7 @@
 static const char *grep_prefix;
 
 static char const * const grep_usage[] = {
-	N_("git grep [<options>] [-e] <pattern> [<rev>...] [[--] <path>...]"),
+	N_("igit grep [<options>] [-e] <pattern> [<rev>...] [[--] <path>...]"),
 	NULL
 };
 

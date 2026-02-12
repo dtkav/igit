@@ -1,5 +1,5 @@
 /*
- * "git add" builtin command
+ * "igit add" builtin command
  *
  * Copyright (C) 2006 Linus Torvalds
  */
@@ -27,7 +27,7 @@
 #include "add-interactive.h"
 
 static const char * const builtin_add_usage[] = {
-	N_("git add [<options>] [--] <pathspec>..."),
+	N_("igit add [<options>] [--] <pathspec>..."),
 	NULL
 };
 static int patch_interactive, add_interactive, edit_interactive;
@@ -309,7 +309,7 @@ static const char embedded_advice[] = N_(
 "\n"
 "	git rm --cached %s\n"
 "\n"
-"See \"git help submodule\" for more information."
+"See \"igit help submodule\" for more information."
 );
 
 static void check_embedded_repo(const char *path)
@@ -472,12 +472,12 @@ int cmd_add(int argc,
 	if (require_pathspec && pathspec.nr == 0) {
 		fprintf(stderr, _("Nothing specified, nothing added.\n"));
 		advise_if_enabled(ADVICE_ADD_EMPTY_PATHSPEC,
-				  _("Maybe you wanted to say 'git add .'?"));
+				  _("Maybe you wanted to say 'igit add .'?"));
 		return 0;
 	}
 
 	if (!take_worktree_changes && addremove_explicit < 0 && pathspec.nr)
-		/* Turn "git add pathspec..." to "git add -A pathspec..." */
+		/* Turn "igit add pathspec..." to "igit add -A pathspec..." */
 		addremove = 1;
 
 	flags = ((verbose ? ADD_CACHE_VERBOSE : 0) |
@@ -548,7 +548,7 @@ int cmd_add(int argc,
 				continue;
 			}
 
-			/* Don't complain at 'git add .' on empty repo */
+			/* Don't complain at 'igit add .' on empty repo */
 			if (!path[0])
 				continue;
 

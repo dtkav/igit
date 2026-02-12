@@ -2,7 +2,7 @@
 #include "transport.h"
 
 static const char usage_msg[] =
-	"git remote-fd <remote> <url>";
+	"igit remote-fd <remote> <url>";
 
 /*
  * URL syntax:

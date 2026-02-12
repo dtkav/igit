@@ -1,5 +1,5 @@
 /*
- * Builtin "git interpret-trailers"
+ * Builtin "igit interpret-trailers"
  *
  * Copyright (c) 2013, 2014 Christian Couder <chriscool@tuxfamily.org>
  *
@@ -15,7 +15,7 @@
 #include "config.h"
 
 static const char * const git_interpret_trailers_usage[] = {
-	N_("git interpret-trailers [--in-place] [--trim-empty]\n"
+	N_("igit interpret-trailers [--in-place] [--trim-empty]\n"
 	   "                       [(--trailer (<key>|<key-alias>)[(=|:)<value>])...]\n"
 	   "                       [--parse] [<file>...]"),
 	NULL

@@ -37,7 +37,7 @@ struct rev_list_info {
 };
 
 static const char rev_list_usage[] =
-"git rev-list [<options>] <commit>... [--] [<path>...]\n"
+"igit rev-list [<options>] <commit>... [--] [<path>...]\n"
 "\n"
 "  limiting output:\n"
 "    --max-count=<n>\n"

@@ -1063,7 +1063,7 @@ static int submodule_needs_pushing(struct repository *r,
 		cp.out = -1;
 		cp.dir = path;
 		if (start_command(&cp))
-			die(_("Could not run 'git rev-list <commits> --not --remotes -n 1' command in submodule %s"),
+			die(_("Could not run 'igit rev-list <commits> --not --remotes -n 1' command in submodule %s"),
 					path);
 		if (strbuf_read(&buf, cp.out, the_hash_algo->hexsz + 1))
 			needs_pushing = 1;
@@ -1898,7 +1898,7 @@ unsigned is_submodule_modified(const char *path, int ignore_untracked)
 	cp.out = -1;
 	cp.dir = path;
 	if (start_command(&cp))
-		die(_("Could not run 'git status --porcelain=2' in submodule %s"), path);
+		die(_("Could not run 'igit status --porcelain=2' in submodule %s"), path);
 
 	fp = xfdopen(cp.out, "r");
 	while (strbuf_getwholeline(&buf, fp, '\n') != EOF) {
@@ -1939,7 +1939,7 @@ unsigned is_submodule_modified(const char *path, int ignore_untracked)
 	fclose(fp);
 
 	if (finish_command(&cp) && !ignore_cp_exit_code)
-		die(_("'git status --porcelain=2' failed in submodule %s"), path);
+		die(_("'igit status --porcelain=2' failed in submodule %s"), path);
 
 	strbuf_release(&buf);
 	return dirty_submodule;
@@ -2020,7 +2020,7 @@ int bad_to_remove_submodule(const char *path, unsigned flags)
 	cp.dir = path;
 	if (start_command(&cp)) {
 		if (flags & SUBMODULE_REMOVAL_DIE_ON_ERROR)
-			die(_("could not start 'git status' in submodule '%s'"),
+			die(_("could not start 'igit status' in submodule '%s'"),
 				path);
 		ret = -1;
 		goto out;
@@ -2033,7 +2033,7 @@ int bad_to_remove_submodule(const char *path, unsigned flags)
 
 	if (finish_command(&cp)) {
 		if (flags & SUBMODULE_REMOVAL_DIE_ON_ERROR)
-			die(_("could not run 'git status' in submodule '%s'"),
+			die(_("could not run 'igit status' in submodule '%s'"),
 				path);
 		ret = -1;
 	}

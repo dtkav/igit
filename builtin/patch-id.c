@@ -193,7 +193,7 @@ static void generate_id_list(int stable, int verbatim)
 }
 
 static const char *const patch_id_usage[] = {
-	N_("git patch-id [--stable | --unstable | --verbatim]"), NULL
+	N_("igit patch-id [--stable | --unstable | --verbatim]"), NULL
 };
 
 struct patch_id_opts {

@@ -16,8 +16,8 @@
 #include "parse-options.h"
 
 static const char * const commit_tree_usage[] = {
-	N_("git commit-tree <tree> [(-p <parent>)...]"),
-	N_("git commit-tree [(-p <parent>)...] [-S[<keyid>]] [(-m <message>)...]\n"
+	N_("igit commit-tree <tree> [(-p <parent>)...]"),
+	N_("igit commit-tree [(-p <parent>)...] [-S[<keyid>]] [(-m <message>)...]\n"
 	   "                [(-F <file>)...] <tree>"),
 	NULL
 };
@@ -85,9 +85,9 @@ static int parse_file_arg_callback(const struct option *opt,
 		fd = xopen(arg, O_RDONLY);
 	}
 	if (strbuf_read(buf, fd, 0) < 0)
-		die_errno(_("git commit-tree: failed to read '%s'"), arg);
+		die_errno(_("igit commit-tree: failed to read '%s'"), arg);
 	if (fd && close(fd))
-		die_errno(_("git commit-tree: failed to close '%s'"), arg);
+		die_errno(_("igit commit-tree: failed to close '%s'"), arg);
 
 	return 0;
 }
@@ -141,7 +141,7 @@ int cmd_commit_tree(int argc,
 
 	if (!buffer.len) {
 		if (strbuf_read(&buffer, 0, 0) < 0)
-			die_errno(_("git commit-tree: failed to read"));
+			die_errno(_("igit commit-tree: failed to read"));
 	}
 
 	if (commit_tree(buffer.buf, buffer.len, &tree_oid, parents, &commit_oid,

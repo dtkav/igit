@@ -404,7 +404,7 @@ static int module_foreach(int argc, const char **argv, const char *prefix,
 		OPT_END()
 	};
 	const char *const git_submodule_helper_usage[] = {
-		N_("git submodule foreach [--quiet] [--recursive] [--] <command>"),
+		N_("igit submodule foreach [--quiet] [--recursive] [--] <command>"),
 		NULL
 	};
 	int ret = 1;
@@ -536,7 +536,7 @@ static int module_init(int argc, const char **argv, const char *prefix,
 		OPT_END()
 	};
 	const char *const git_submodule_helper_usage[] = {
-		N_("git submodule init [<options>] [<path>]"),
+		N_("igit submodule init [<options>] [<path>]"),
 		NULL
 	};
 	int ret = 1;
@@ -727,7 +727,7 @@ static int module_status(int argc, const char **argv, const char *prefix,
 		OPT_END()
 	};
 	const char *const git_submodule_helper_usage[] = {
-		N_("git submodule status [--quiet] [--cached] [--recursive] [<path>...]"),
+		N_("igit submodule status [--quiet] [--cached] [--recursive] [<path>...]"),
 		NULL
 	};
 	int ret = 1;
@@ -1158,7 +1158,7 @@ static int module_summary(int argc, const char **argv, const char *prefix,
 		OPT_END()
 	};
 	const char *const git_submodule_helper_usage[] = {
-		N_("git submodule summary [<options>] [<commit>] [--] [<path>]"),
+		N_("igit submodule summary [<options>] [<commit>] [--] [<path>]"),
 		NULL
 	};
 
@@ -1328,7 +1328,7 @@ static int module_sync(int argc, const char **argv, const char *prefix,
 		OPT_END()
 	};
 	const char *const git_submodule_helper_usage[] = {
-		N_("git submodule sync [--quiet] [--recursive] [<path>]"),
+		N_("igit submodule sync [--quiet] [--recursive] [<path>]"),
 		NULL
 	};
 	int ret = 1;
@@ -1475,7 +1475,7 @@ static int module_deinit(int argc, const char **argv, const char *prefix,
 		OPT_END()
 	};
 	const char *const git_submodule_helper_usage[] = {
-		N_("git submodule deinit [--quiet] [-f | --force] [--all | [--] [<path>...]]"),
+		N_("igit submodule deinit [--quiet] [-f | --force] [--all | [--] [<path>...]]"),
 		NULL
 	};
 	int ret = 1;
@@ -1701,7 +1701,7 @@ static int clone_submodule(const struct module_clone_data *clone_data,
 
 	if (validate_submodule_git_dir(sm_gitdir, clone_data->name) < 0)
 		die(_("refusing to create/use '%s' in another submodule's "
-		      "git dir"), sm_gitdir);
+		      "igit dir"), sm_gitdir);
 
 	if (!file_exists(sm_gitdir)) {
 		if (clone_data->require_init && !stat(clone_data_path, &st) &&
@@ -1790,7 +1790,7 @@ static int clone_submodule(const struct module_clone_data *clone_data,
 		unlink(head);
 		free(head);
 		die(_("refusing to create/use '%s' in another submodule's "
-		      "git dir"), sm_gitdir);
+		      "igit dir"), sm_gitdir);
 	}
 
 	connect_work_tree_and_git_dir(clone_data_path, sm_gitdir, 0);
@@ -1861,7 +1861,7 @@ static int module_clone(int argc, const char **argv, const char *prefix,
 		OPT_END()
 	};
 	const char *const git_submodule_helper_usage[] = {
-		N_("git submodule--helper clone [--prefix=<path>] [--quiet] "
+		N_("igit submodule--helper clone [--prefix=<path>] [--quiet] "
 		   "[--reference <repository>] [--name <name>] [--depth <depth>] "
 		   "[--single-branch] [--filter <filter-spec>] "
 		   "--url <url> --path <path>"),
@@ -2375,7 +2375,7 @@ static int run_update_command(const struct update_data *ud, int subforce)
 		case SM_UPDATE_CHECKOUT:
 			die_message(_("Unable to checkout '%s' in submodule path '%s'"),
 				    oid, ud->displaypath);
-			/* No "ret" assignment, use "git checkout"'s */
+			/* No "ret" assignment, use "igit checkout"'s */
 			break;
 		case SM_UPDATE_REBASE:
 			ret = die_message(_("Unable to rebase '%s' in submodule path '%s'"),
@@ -2819,7 +2819,7 @@ static int module_update(int argc, const char **argv, const char *prefix,
 		OPT_END()
 	};
 	const char *const git_submodule_helper_usage[] = {
-		N_("git submodule [--quiet] update"
+		N_("igit submodule [--quiet] update"
 		" [--init [--filter=<filter-spec>]] [--remote]"
 		" [-N|--no-fetch] [-f|--force]"
 		" [--checkout|--merge|--rebase]"
@@ -2991,7 +2991,7 @@ static int absorb_git_dirs(int argc, const char **argv, const char *prefix,
 		OPT_END()
 	};
 	const char *const git_submodule_helper_usage[] = {
-		N_("git submodule absorbgitdirs [<options>] [<path>...]"),
+		N_("igit submodule absorbgitdirs [<options>] [<path>...]"),
 		NULL
 	};
 	int ret = 1;
@@ -3025,7 +3025,7 @@ static int module_set_url(int argc, const char **argv, const char *prefix,
 		OPT_END()
 	};
 	const char *const usage[] = {
-		N_("git submodule set-url [--quiet] <path> <newurl>"),
+		N_("igit submodule set-url [--quiet] <path> <newurl>"),
 		NULL
 	};
 	const struct submodule *sub;
@@ -3074,8 +3074,8 @@ static int module_set_branch(int argc, const char **argv, const char *prefix,
 		OPT_END()
 	};
 	const char *const usage[] = {
-		N_("git submodule set-branch [-q|--quiet] (-d|--default) <path>"),
-		N_("git submodule set-branch [-q|--quiet] (-b|--branch) <branch> <path>"),
+		N_("igit submodule set-branch [-q|--quiet] (-d|--default) <path>"),
+		N_("igit submodule set-branch [-q|--quiet] (-b|--branch) <branch> <path>"),
 		NULL
 	};
 	const struct submodule *sub;
@@ -3123,7 +3123,7 @@ static int module_create_branch(int argc, const char **argv, const char *prefix,
 		OPT_END()
 	};
 	const char *const usage[] = {
-		N_("git submodule--helper create-branch [-f|--force] [--create-reflog] [-q|--quiet] [-t|--track] [-n|--dry-run] <name> <start-oid> <start-name>"),
+		N_("igit submodule--helper create-branch [-f|--force] [--create-reflog] [-q|--quiet] [-t|--track] [-n|--dry-run] <name> <start-oid> <start-name>"),
 		NULL
 	};
 
@@ -3454,7 +3454,7 @@ static int module_add(int argc, const char **argv, const char *prefix,
 		OPT_END()
 	};
 	const char *const usage[] = {
-		N_("git submodule add [<options>] [--] <repository> [<path>]"),
+		N_("igit submodule add [<options>] [--] <repository> [<path>]"),
 		NULL
 	};
 	struct strbuf sb = STRBUF_INIT;
@@ -3590,7 +3590,7 @@ int cmd_submodule__helper(int argc,
 {
 	parse_opt_subcommand_fn *fn = NULL;
 	const char *const usage[] = {
-		N_("git submodule--helper <command>"),
+		N_("igit submodule--helper <command>"),
 		NULL
 	};
 	struct option options[] = {

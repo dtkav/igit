@@ -20,7 +20,7 @@ static int merge_entry(int pos, const char *path)
 	struct child_process cmd = CHILD_PROCESS_INIT;
 
 	if (pos >= the_repository->index->cache_nr)
-		die("git merge-index: %s not in the cache", path);
+		die("igit merge-index: %s not in the cache", path);
 	found = 0;
 	do {
 		const struct cache_entry *ce = the_repository->index->cache[pos];
@@ -35,7 +35,7 @@ static int merge_entry(int pos, const char *path)
 		arguments[stage + 4] = ownbuf[stage];
 	} while (++pos < the_repository->index->cache_nr);
 	if (!found)
-		die("git merge-index: %s not in the cache", path);
+		die("igit merge-index: %s not in the cache", path);
 
 	strvec_pushv(&cmd.args, arguments);
 	if (run_command(&cmd)) {
@@ -76,7 +76,7 @@ static void merge_all(void)
 }
 
 static const char usage_string[] =
-"git merge-index [-o] [-q] <merge-program> (-a | [--] [<filename>...])";
+"igit merge-index [-o] [-q] <merge-program> (-a | [--] [<filename>...])";
 
 int cmd_merge_index(int argc,
 		    const char **argv,
@@ -121,7 +121,7 @@ int cmd_merge_index(int argc,
 				merge_all();
 				continue;
 			}
-			die("git merge-index: unknown option %s", arg);
+			die("igit merge-index: unknown option %s", arg);
 		}
 		merge_one_path(arg);
 	}

@@ -204,23 +204,23 @@ static void wt_longstatus_print_unmerged_header(struct wt_status *s)
 	else if (!s->is_initial) {
 		if (!strcmp(s->reference, "HEAD"))
 			status_printf_ln(s, c,
-					 _("  (use \"git restore --staged <file>...\" to unstage)"));
+					 _("  (use \"igit restore --staged <file>...\" to unstage)"));
 		else
 			status_printf_ln(s, c,
-					 _("  (use \"git restore --source=%s --staged <file>...\" to unstage)"),
+					 _("  (use \"igit restore --source=%s --staged <file>...\" to unstage)"),
 					 s->reference);
 	} else
-		status_printf_ln(s, c, _("  (use \"git rm --cached <file>...\" to unstage)"));
+		status_printf_ln(s, c, _("  (use \"igit rm --cached <file>...\" to unstage)"));
 
 	if (!both_deleted) {
 		if (!del_mod_conflict)
-			status_printf_ln(s, c, _("  (use \"git add <file>...\" to mark resolution)"));
+			status_printf_ln(s, c, _("  (use \"igit add <file>...\" to mark resolution)"));
 		else
-			status_printf_ln(s, c, _("  (use \"git add/rm <file>...\" as appropriate to mark resolution)"));
+			status_printf_ln(s, c, _("  (use \"igit add/rm <file>...\" as appropriate to mark resolution)"));
 	} else if (!del_mod_conflict && !not_deleted) {
-		status_printf_ln(s, c, _("  (use \"git rm <file>...\" to mark resolution)"));
+		status_printf_ln(s, c, _("  (use \"igit rm <file>...\" to mark resolution)"));
 	} else {
-		status_printf_ln(s, c, _("  (use \"git add/rm <file>...\" as appropriate to mark resolution)"));
+		status_printf_ln(s, c, _("  (use \"igit add/rm <file>...\" as appropriate to mark resolution)"));
 	}
 }
 
@@ -232,17 +232,17 @@ static void wt_longstatus_print_cached_header(struct wt_status *s)
 	if (!s->hints)
 		return;
 	if (s->whence != FROM_COMMIT)
-		; /* NEEDSWORK: use "git reset --unresolve"??? */
+		; /* NEEDSWORK: use "igit reset --unresolve"??? */
 	else if (!s->is_initial) {
 		if (!strcmp(s->reference, "HEAD"))
 			status_printf_ln(s, c
-					 , _("  (use \"git restore --staged <file>...\" to unstage)"));
+					 , _("  (use \"igit restore --staged <file>...\" to unstage)"));
 		else
 			status_printf_ln(s, c,
-					 _("  (use \"git restore --source=%s --staged <file>...\" to unstage)"),
+					 _("  (use \"igit restore --source=%s --staged <file>...\" to unstage)"),
 					 s->reference);
 	} else
-		status_printf_ln(s, c, _("  (use \"git rm --cached <file>...\" to unstage)"));
+		status_printf_ln(s, c, _("  (use \"igit rm --cached <file>...\" to unstage)"));
 }
 
 static void wt_longstatus_print_dirty_header(struct wt_status *s,
@@ -255,10 +255,10 @@ static void wt_longstatus_print_dirty_header(struct wt_status *s,
 	if (!s->hints)
 		return;
 	if (!has_deleted)
-		status_printf_ln(s, c, _("  (use \"git add <file>...\" to update what will be committed)"));
+		status_printf_ln(s, c, _("  (use \"igit add <file>...\" to update what will be committed)"));
 	else
-		status_printf_ln(s, c, _("  (use \"git add/rm <file>...\" to update what will be committed)"));
-	status_printf_ln(s, c, _("  (use \"git restore <file>...\" to discard changes in working directory)"));
+		status_printf_ln(s, c, _("  (use \"igit add/rm <file>...\" to update what will be committed)"));
+	status_printf_ln(s, c, _("  (use \"igit restore <file>...\" to discard changes in working directory)"));
 	if (has_dirty_submodules)
 		status_printf_ln(s, c, _("  (commit or discard the untracked or modified content in submodules)"));
 }
@@ -271,7 +271,7 @@ static void wt_longstatus_print_other_header(struct wt_status *s,
 	status_printf_ln(s, c, "%s:", what);
 	if (!s->hints)
 		return;
-	status_printf_ln(s, c, _("  (use \"git %s <file>...\" to include in what will be committed)"), how);
+	status_printf_ln(s, c, _("  (use \"igit %s <file>...\" to include in what will be committed)"), how);
 }
 
 static void wt_longstatus_print_trailer(struct wt_status *s)
@@ -1247,16 +1247,16 @@ static void show_merge_in_progress(struct wt_status *s,
 		status_printf_ln(s, color, _("You have unmerged paths."));
 		if (s->hints) {
 			status_printf_ln(s, color,
-					 _("  (fix conflicts and run \"git commit\")"));
+					 _("  (fix conflicts and run \"igit commit\")"));
 			status_printf_ln(s, color,
-					 _("  (use \"git merge --abort\" to abort the merge)"));
+					 _("  (use \"igit merge --abort\" to abort the merge)"));
 		}
 	} else {
 		status_printf_ln(s, color,
 			_("All conflicts fixed but you are still merging."));
 		if (s->hints)
 			status_printf_ln(s, color,
-				_("  (use \"git commit\" to conclude merge)"));
+				_("  (use \"igit commit\" to conclude merge)"));
 	}
 	wt_longstatus_print_trailer(s);
 }
@@ -1275,14 +1275,14 @@ static void show_am_in_progress(struct wt_status *s,
 		am_empty_patch = s->state.am_empty_patch;
 		if (!am_empty_patch)
 			status_printf_ln(s, color,
-				_("  (fix conflicts and then run \"git am --continue\")"));
+				_("  (fix conflicts and then run \"igit am --continue\")"));
 		status_printf_ln(s, color,
-			_("  (use \"git am --skip\" to skip this patch)"));
+			_("  (use \"igit am --skip\" to skip this patch)"));
 		if (am_empty_patch)
 			status_printf_ln(s, color,
-				_("  (use \"git am --allow-empty\" to record this patch as an empty commit)"));
+				_("  (use \"igit am --allow-empty\" to record this patch as an empty commit)"));
 		status_printf_ln(s, color,
-			_("  (use \"git am --abort\" to restore the original branch)"));
+			_("  (use \"igit am --abort\" to restore the original branch)"));
 	}
 	wt_longstatus_print_trailer(s);
 }
@@ -1452,7 +1452,7 @@ static void show_rebase_information(struct wt_status *s,
 				status_printf_ln(s, color, "   %s", yet_to_do.items[i].string);
 			if (s->hints)
 				status_printf_ln(s, color,
-					_("  (use \"git rebase --edit-todo\" to view and edit)"));
+					_("  (use \"igit rebase --edit-todo\" to view and edit)"));
 		}
 		string_list_clear(&yet_to_do, 0);
 		string_list_clear(&have_done, 0);
@@ -1482,18 +1482,18 @@ static void show_rebase_in_progress(struct wt_status *s,
 		print_rebase_state(s, color);
 		if (s->hints) {
 			status_printf_ln(s, color,
-				_("  (fix conflicts and then run \"git rebase --continue\")"));
+				_("  (fix conflicts and then run \"igit rebase --continue\")"));
 			status_printf_ln(s, color,
-				_("  (use \"git rebase --skip\" to skip this patch)"));
+				_("  (use \"igit rebase --skip\" to skip this patch)"));
 			status_printf_ln(s, color,
-				_("  (use \"git rebase --abort\" to check out the original branch)"));
+				_("  (use \"igit rebase --abort\" to check out the original branch)"));
 		}
 	} else if (s->state.rebase_in_progress ||
 		   !stat(git_path_merge_msg(s->repo), &st)) {
 		print_rebase_state(s, color);
 		if (s->hints)
 			status_printf_ln(s, color,
-				_("  (all conflicts fixed: run \"git rebase --continue\")"));
+				_("  (all conflicts fixed: run \"igit rebase --continue\")"));
 	} else if (split_commit_in_progress(s)) {
 		if (s->state.branch)
 			status_printf_ln(s, color,
@@ -1505,7 +1505,7 @@ static void show_rebase_in_progress(struct wt_status *s,
 					 _("You are currently splitting a commit during a rebase."));
 		if (s->hints)
 			status_printf_ln(s, color,
-				_("  (Once your working directory is clean, run \"git rebase --continue\")"));
+				_("  (Once your working directory is clean, run \"igit rebase --continue\")"));
 	} else {
 		if (s->state.branch)
 			status_printf_ln(s, color,
@@ -1517,9 +1517,9 @@ static void show_rebase_in_progress(struct wt_status *s,
 					 _("You are currently editing a commit during a rebase."));
 		if (s->hints && !s->amend) {
 			status_printf_ln(s, color,
-				_("  (use \"git commit --amend\" to amend the current commit)"));
+				_("  (use \"igit commit --amend\" to amend the current commit)"));
 			status_printf_ln(s, color,
-				_("  (use \"git rebase --continue\" once you are satisfied with your changes)"));
+				_("  (use \"igit rebase --continue\" once you are satisfied with your changes)"));
 		}
 	}
 	wt_longstatus_print_trailer(s);
@@ -1540,17 +1540,17 @@ static void show_cherry_pick_in_progress(struct wt_status *s,
 	if (s->hints) {
 		if (has_unmerged(s))
 			status_printf_ln(s, color,
-				_("  (fix conflicts and run \"git cherry-pick --continue\")"));
+				_("  (fix conflicts and run \"igit cherry-pick --continue\")"));
 		else if (is_null_oid(&s->state.cherry_pick_head_oid))
 			status_printf_ln(s, color,
-				_("  (run \"git cherry-pick --continue\" to continue)"));
+				_("  (run \"igit cherry-pick --continue\" to continue)"));
 		else
 			status_printf_ln(s, color,
-				_("  (all conflicts fixed: run \"git cherry-pick --continue\")"));
+				_("  (all conflicts fixed: run \"igit cherry-pick --continue\")"));
 		status_printf_ln(s, color,
-			_("  (use \"git cherry-pick --skip\" to skip this patch)"));
+			_("  (use \"igit cherry-pick --skip\" to skip this patch)"));
 		status_printf_ln(s, color,
-			_("  (use \"git cherry-pick --abort\" to cancel the cherry-pick operation)"));
+			_("  (use \"igit cherry-pick --abort\" to cancel the cherry-pick operation)"));
 	}
 	wt_longstatus_print_trailer(s);
 }
@@ -1569,17 +1569,17 @@ static void show_revert_in_progress(struct wt_status *s,
 	if (s->hints) {
 		if (has_unmerged(s))
 			status_printf_ln(s, color,
-				_("  (fix conflicts and run \"git revert --continue\")"));
+				_("  (fix conflicts and run \"igit revert --continue\")"));
 		else if (is_null_oid(&s->state.revert_head_oid))
 			status_printf_ln(s, color,
-				_("  (run \"git revert --continue\" to continue)"));
+				_("  (run \"igit revert --continue\" to continue)"));
 		else
 			status_printf_ln(s, color,
-				_("  (all conflicts fixed: run \"git revert --continue\")"));
+				_("  (all conflicts fixed: run \"igit revert --continue\")"));
 		status_printf_ln(s, color,
-			_("  (use \"git revert --skip\" to skip this patch)"));
+			_("  (use \"igit revert --skip\" to skip this patch)"));
 		status_printf_ln(s, color,
-			_("  (use \"git revert --abort\" to cancel the revert operation)"));
+			_("  (use \"igit revert --abort\" to cancel the revert operation)"));
 	}
 	wt_longstatus_print_trailer(s);
 }
@@ -1596,7 +1596,7 @@ static void show_bisect_in_progress(struct wt_status *s,
 				 _("You are currently bisecting."));
 	if (s->hints)
 		status_printf_ln(s, color,
-			_("  (use \"git bisect reset\" to get back to the original branch)"));
+			_("  (use \"igit bisect reset\" to get back to the original branch)"));
 	wt_longstatus_print_trailer(s);
 }
 
@@ -1926,7 +1926,7 @@ static void wt_longstatus_print(struct wt_status *s)
 						s->untracked_in_ms / 1000.0);
 			}
 			status_printf_ln(s, GIT_COLOR_NORMAL,
-					_("See 'git help status' for information on how to improve this."));
+					_("See 'igit help status' for information on how to improve this."));
 			status_printf_ln(s, GIT_COLOR_NORMAL, "%s", "");
 		}
 	} else if (s->committable)
@@ -1944,8 +1944,8 @@ static void wt_longstatus_print(struct wt_status *s)
 		else if (s->workdir_dirty) {
 			if (s->hints)
 				fprintf(s->fp, _("no changes added to commit "
-						 "(use \"git add\" and/or "
-						 "\"git commit -a\")\n"));
+						 "(use \"igit add\" and/or "
+						 "\"igit commit -a\")\n"));
 			else
 				fprintf(s->fp, _("no changes added to "
 						 "commit\n"));
@@ -1953,14 +1953,14 @@ static void wt_longstatus_print(struct wt_status *s)
 			if (s->hints)
 				fprintf(s->fp, _("nothing added to commit but "
 						 "untracked files present (use "
-						 "\"git add\" to track)\n"));
+						 "\"igit add\" to track)\n"));
 			else
 				fprintf(s->fp, _("nothing added to commit but "
 						 "untracked files present\n"));
 		} else if (s->is_initial) {
 			if (s->hints)
 				fprintf(s->fp, _("nothing to commit (create/"
-						 "copy files and use \"git "
+						 "copy files and use \"igit "
 						 "add\" to track)\n"));
 			else
 				fprintf(s->fp, _("nothing to commit\n"));

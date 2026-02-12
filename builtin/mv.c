@@ -1,5 +1,5 @@
 /*
- * "git mv" builtin command
+ * "igit mv" builtin command
  *
  * Copyright (C) 2006 Johannes Schindelin
  */
@@ -29,8 +29,8 @@
 #include "entry.h"
 
 static const char * const builtin_mv_usage[] = {
-	N_("git mv [-v] [-f] [-n] [-k] <source> <destination>"),
-	N_("git mv [-v] [-f] [-n] [-k] <source>... <destination-directory>"),
+	N_("igit mv [-v] [-f] [-n] [-k] <source> <destination>"),
+	N_("igit mv [-v] [-f] [-n] [-k] <source>... <destination-directory>"),
 	NULL
 };
 
@@ -255,8 +255,8 @@ int cmd_mv(int argc,
 
 	/*
 	 * Keep trailing slash, needed to let
-	 * "git mv file no-such-dir/" error out, except in the case
-	 * "git mv directory no-such-dir/".
+	 * "igit mv file no-such-dir/" error out, except in the case
+	 * "igit mv directory no-such-dir/".
 	 */
 	flags = KEEP_TRAILING_SLASH;
 	if (argc == 1 && is_directory(argv[0]) && !is_directory(argv[1]))

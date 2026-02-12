@@ -13,7 +13,7 @@
 #include "urlmatch.h"
 #include "trace2.h"
 
-static const char http_fetch_usage[] = "git http-fetch "
+static const char http_fetch_usage[] = "igit http-fetch "
 "[-c] [-t] [-a] [-v] [--recover] [-w ref] [--stdin | --packfile=hash | commit-id] url";
 
 static int fetch_using_walker(const char *raw_url, int get_verbosely,
@@ -42,7 +42,7 @@ static int fetch_using_walker(const char *raw_url, int get_verbosely,
 		fprintf(stderr,
 "Some loose object were found to be corrupt, but they might be just\n"
 "a false '404 Not Found' error message sent with incorrect HTTP\n"
-"status code.  Suggest running 'git fsck'.\n");
+"status code.  Suggest running 'igit fsck'.\n");
 	}
 
 	walker_free(walker);

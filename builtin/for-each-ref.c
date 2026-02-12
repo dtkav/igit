@@ -116,7 +116,7 @@ int cmd_for_each_ref(int argc,
 		     struct repository *repo)
 {
 	static char const * const for_each_ref_usage[] = {
-		N_("git for-each-ref " COMMON_USAGE_FOR_EACH_REF),
+		N_("igit for-each-ref " COMMON_USAGE_FOR_EACH_REF),
 		NULL
 	};
 

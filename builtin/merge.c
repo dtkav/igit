@@ -1,5 +1,5 @@
 /*
- * Builtin "git merge"
+ * Builtin "igit merge"
  *
  * Copyright (c) 2008 Miklos Vajna <vmiklos@frugalware.org>
  *
@@ -63,9 +63,9 @@ struct strategy {
 };
 
 static const char * const builtin_merge_usage[] = {
-	N_("git merge [<options>] [<commit>...]"),
-	"git merge --abort",
-	"git merge --continue",
+	N_("igit merge [<options>] [<commit>...]"),
+	"igit merge --abort",
+	"igit merge --continue",
 	NULL
 };
 
@@ -782,7 +782,7 @@ static void write_tree_trivial(struct object_id *oid)
 	if (write_index_as_tree(oid, the_repository->index,
 				repo_get_index_file(the_repository),
 				0, NULL))
-		die(_("git write-tree failed to write a tree"));
+		die(_("igit write-tree failed to write a tree"));
 }
 
 static int try_merge_strategy(const char *strategy, struct commit_list *common,
@@ -901,7 +901,7 @@ static void abort_commit(struct commit_list *remoteheads, const char *err_msg)
 	if (err_msg)
 		error("%s", err_msg);
 	fprintf(stderr,
-		_("Not committing merge; use 'git commit' to complete the merge.\n"));
+		_("Not committing merge; use 'igit commit' to complete the merge.\n"));
 	write_merge_state(remoteheads);
 	exit(1);
 }
@@ -1343,7 +1343,7 @@ static int merging_a_throwaway_tag(struct commit *commit)
 	 *
 	 * Otherwise, we are playing an integrator's role, making a
 	 * merge with a throw-away tag from a contributor with
-	 * something like "git pull $contributor $signed_tag".
+	 * something like "igit pull $contributor $signed_tag".
 	 * We want to forbid such a merge from fast-forwarding
 	 * by default; otherwise we would not keep the signature
 	 * anywhere.
@@ -1431,7 +1431,7 @@ int cmd_merge(int argc,
 					"", "MERGE_AUTOSTASH", &stash_oid,
 					REF_NO_DEREF);
 
-		/* Invoke 'git reset --merge' */
+		/* Invoke 'igit reset --merge' */
 		ret = cmd_reset(nargc, nargv, prefix, the_repository);
 
 		if (!is_null_oid(&stash_oid)) {
@@ -1463,7 +1463,7 @@ int cmd_merge(int argc,
 		if (!file_exists(git_path_merge_head(the_repository)))
 			die(_("There is no merge in progress (MERGE_HEAD missing)."));
 
-		/* Invoke 'git commit' */
+		/* Invoke 'igit commit' */
 		ret = cmd_commit(nargc, nargv, prefix, the_repository);
 		goto done;
 	}
@@ -1474,7 +1474,7 @@ int cmd_merge(int argc,
 	if (file_exists(git_path_merge_head(the_repository))) {
 		/*
 		 * There is no unmerged entry, don't advise 'git
-		 * add/rm <file>', just 'git commit'.
+		 * add/rm <file>', just 'igit commit'.
 		 */
 		if (advice_enabled(ADVICE_RESOLVE_CONFLICT))
 			die(_("You have not concluded your merge (MERGE_HEAD exists).\n"
@@ -1531,8 +1531,8 @@ int cmd_merge(int argc,
 	if (!head_commit) {
 		/*
 		 * If the merged head is a valid one there is no reason
-		 * to forbid "git merge" into a branch yet to be born.
-		 * We do the same for "git pull".
+		 * to forbid "igit merge" into a branch yet to be born.
+		 * We do the same for "igit pull".
 		 */
 		struct object_id *remote_head_oid;
 		if (squash)
@@ -1740,7 +1740,7 @@ int cmd_merge(int argc,
 
 			/*
 			 * Here we *have* to calculate the individual
-			 * merge_bases again, otherwise "git merge HEAD^
+			 * merge_bases again, otherwise "igit merge HEAD^
 			 * HEAD^^" would be missed.
 			 */
 			if (repo_get_merge_bases(the_repository, head_commit,

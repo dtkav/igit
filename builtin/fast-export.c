@@ -1,5 +1,5 @@
 /*
- * "git fast-export" builtin command
+ * "igit fast-export" builtin command
  *
  * Copyright (C) 2007 Johannes E. Schindelin
  */
@@ -33,7 +33,7 @@
 #include "gpg-interface.h"
 
 static const char *const fast_export_usage[] = {
-	N_("git fast-export [<rev-list-opts>]"),
+	N_("igit fast-export [<rev-list-opts>]"),
 	NULL
 };
 
@@ -824,7 +824,7 @@ static void handle_commit(struct commit *commit, struct rev_info *rev,
 			    oid_to_hex(&commit->object.oid));
 		case SIGN_STRIP_IF_INVALID:
 			die(_("'strip-if-invalid' is not a valid mode for "
-			      "git fast-export with --signed-commits=<mode>"));
+			      "igit fast-export with --signed-commits=<mode>"));
 		default:
 			BUG("invalid signed_commit_mode value %d", signed_commit_mode);
 		}
@@ -969,7 +969,7 @@ static void handle_tag(const char *name, struct tag *tag)
 				    oid_to_hex(&tag->object.oid));
 			case SIGN_STRIP_IF_INVALID:
 				die(_("'strip-if-invalid' is not a valid mode for "
-				      "git fast-export with --signed-tags=<mode>"));
+				      "igit fast-export with --signed-tags=<mode>"));
 			default:
 				BUG("invalid signed_commit_mode value %d", signed_commit_mode);
 			}

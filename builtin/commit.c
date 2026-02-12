@@ -1,5 +1,5 @@
 /*
- * Builtin "git commit"
+ * Builtin "igit commit"
  *
  * Copyright (c) 2007 Kristian Høgsberg <krh@redhat.com>
  * Based on git-commit.sh by Junio C Hamano and Linus Torvalds
@@ -45,7 +45,7 @@
 #include "trailer.h"
 
 static const char * const builtin_commit_usage[] = {
-	N_("git commit [-a | --interactive | --patch] [-s] [-v] [-u[<mode>]] [--amend]\n"
+	N_("igit commit [-a | --interactive | --patch] [-s] [-v] [-u[<mode>]] [--amend]\n"
 	   "           [--dry-run] [(-c | -C | --squash) <commit> | --fixup [(amend|reword):]<commit>]\n"
 	   "           [-F <file> | -m <msg>] [--reset-author] [--allow-empty]\n"
 	   "           [--allow-empty-message] [--no-verify] [-e] [--author=<author>]\n"
@@ -57,14 +57,14 @@ static const char * const builtin_commit_usage[] = {
 };
 
 static const char * const builtin_status_usage[] = {
-	N_("git status [<options>] [--] [<pathspec>...]"),
+	N_("igit status [<options>] [--] [<pathspec>...]"),
 	NULL
 };
 
 static const char empty_amend_advice[] =
 N_("You asked to amend the most recent commit, but doing so would make\n"
 "it empty. You can repeat your command with --allow-empty, or you can\n"
-"remove the commit entirely with \"git reset HEAD^\".\n");
+"remove the commit entirely with \"igit reset HEAD^\".\n");
 
 static const char empty_cherry_pick_advice[] =
 N_("The previous cherry-pick is now empty, possibly due to conflict resolution.\n"
@@ -74,10 +74,10 @@ N_("The previous cherry-pick is now empty, possibly due to conflict resolution.\
 "\n");
 
 static const char empty_rebase_pick_advice[] =
-N_("Otherwise, please use 'git rebase --skip'\n");
+N_("Otherwise, please use 'igit rebase --skip'\n");
 
 static const char empty_cherry_pick_advice_single[] =
-N_("Otherwise, please use 'git cherry-pick --skip'\n");
+N_("Otherwise, please use 'igit cherry-pick --skip'\n");
 
 static const char empty_cherry_pick_advice_multi[] =
 N_("and then use:\n"
@@ -1953,7 +1953,7 @@ int cmd_commit(int argc,
 	if (commit_index_files())
 		die(_("repository has been updated, but unable to write\n"
 		      "new index file. Check that disk is not full and quota is\n"
-		      "not exceeded, and then \"git restore --staged :/\" to recover."));
+		      "not exceeded, and then \"igit restore --staged :/\" to recover."));
 
 	git_test_write_commit_graph_or_die(the_repository->objects->sources);
 

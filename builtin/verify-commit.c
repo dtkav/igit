@@ -1,5 +1,5 @@
 /*
- * Builtin "git commit-commit"
+ * Builtin "igit commit-commit"
  *
  * Copyright (c) 2014 Michael J Gruber <git@drmicha.warpmail.net>
  *
@@ -15,7 +15,7 @@
 #include "gpg-interface.h"
 
 static const char * const verify_commit_usage[] = {
-		N_("git verify-commit [-v | --verbose] [--raw] <commit>..."),
+		N_("igit verify-commit [-v | --verbose] [--raw] <commit>..."),
 		NULL
 };
 

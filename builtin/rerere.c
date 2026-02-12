@@ -12,7 +12,7 @@
 #include "pathspec.h"
 
 static const char * const rerere_usage[] = {
-	N_("git rerere [clear | forget <pathspec>... | diff | status | remaining | gc]"),
+	N_("igit rerere [clear | forget <pathspec>... | diff | status | remaining | gc]"),
 	NULL,
 };
 
@@ -81,7 +81,7 @@ int cmd_rerere(int argc,
 		int ret;
 
 		if (argc < 2)
-			warning(_("'git rerere forget' without paths is deprecated"));
+			warning(_("'igit rerere forget' without paths is deprecated"));
 		parse_pathspec(&pathspec, 0, PATHSPEC_PREFER_CWD,
 			       prefix, argv + 1);
 

@@ -28,7 +28,7 @@ static int reuseaddr;
 static int informative_errors;
 
 static const char daemon_usage[] =
-"git daemon [--verbose] [--syslog] [--export-all]\n"
+"igit daemon [--verbose] [--syslog] [--export-all]\n"
 "           [--timeout=<n>] [--init-timeout=<n>] [--max-connections=<n>]\n"
 "           [--strict-paths] [--base-path=<path>] [--base-path-relaxed]\n"
 "           [--user-path | --user-path=<path>]\n"

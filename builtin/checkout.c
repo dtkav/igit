@@ -44,18 +44,18 @@
 #include "add-interactive.h"
 
 static const char * const checkout_usage[] = {
-	N_("git checkout [<options>] <branch>"),
-	N_("git checkout [<options>] [<branch>] -- <file>..."),
+	N_("igit checkout [<options>] <branch>"),
+	N_("igit checkout [<options>] [<branch>] -- <file>..."),
 	NULL,
 };
 
 static const char * const switch_branch_usage[] = {
-	N_("git switch [<options>] [<branch>]"),
+	N_("igit switch [<options>] [<branch>]"),
 	NULL,
 };
 
 static const char * const restore_usage[] = {
-	N_("git restore [<options>] [--source=<branch>] <file>..."),
+	N_("igit restore [<options>] [--source=<branch>] <file>..."),
 	NULL,
 };
 
@@ -346,7 +346,7 @@ static void mark_ce_for_checkout_overlay(struct cache_entry *ce,
 		return;
 	if (opts->source_tree && !(ce->ce_flags & CE_UPDATE))
 		/*
-		 * "git checkout tree-ish -- path", but this entry
+		 * "igit checkout tree-ish -- path", but this entry
 		 * is in the original index but is not in tree-ish
 		 * or does not match the pathspec; it will not be
 		 * checked out to the working tree.  We will not do
@@ -1426,8 +1426,8 @@ static int parse_branchname_arg(int argc, const char **argv,
 			recover_with_dwim = 0;
 
 		/*
-		 * Accept "git checkout foo", "git checkout foo --"
-		 * and "git switch foo" as candidates for dwim.
+		 * Accept "igit checkout foo", "igit checkout foo --"
+		 * and "igit switch foo" as candidates for dwim.
 		 */
 		if (!(argc == 1 && !has_dash_dash) &&
 		    !(argc == 2 && has_dash_dash) &&
@@ -1542,24 +1542,24 @@ static void die_if_some_operation_in_progress(void)
 
 	if (state.merge_in_progress)
 		die(_("cannot switch branch while merging\n"
-		      "Consider \"git merge --quit\" "
-		      "or \"git worktree add\"."));
+		      "Consider \"igit merge --quit\" "
+		      "or \"igit worktree add\"."));
 	if (state.am_in_progress)
 		die(_("cannot switch branch in the middle of an am session\n"
-		      "Consider \"git am --quit\" "
-		      "or \"git worktree add\"."));
+		      "Consider \"igit am --quit\" "
+		      "or \"igit worktree add\"."));
 	if (state.rebase_interactive_in_progress || state.rebase_in_progress)
 		die(_("cannot switch branch while rebasing\n"
-		      "Consider \"git rebase --quit\" "
-		      "or \"git worktree add\"."));
+		      "Consider \"igit rebase --quit\" "
+		      "or \"igit worktree add\"."));
 	if (state.cherry_pick_in_progress)
 		die(_("cannot switch branch while cherry-picking\n"
-		      "Consider \"git cherry-pick --quit\" "
-		      "or \"git worktree add\"."));
+		      "Consider \"igit cherry-pick --quit\" "
+		      "or \"igit worktree add\"."));
 	if (state.revert_in_progress)
 		die(_("cannot switch branch while reverting\n"
-		      "Consider \"git revert --quit\" "
-		      "or \"git worktree add\"."));
+		      "Consider \"igit revert --quit\" "
+		      "or \"igit worktree add\"."));
 	if (state.bisect_in_progress)
 		warning(_("you are switching branch while bisecting"));
 
@@ -1654,11 +1654,11 @@ static int checkout_branch(struct checkout_opts *opts,
 	if (!opts->can_switch_when_in_progress)
 		die_if_some_operation_in_progress();
 
-	/* "git checkout <branch>" */
+	/* "igit checkout <branch>" */
 	if (new_branch_info->path && !opts->force_detach && !opts->new_branch)
 		die_if_switching_to_a_branch_in_use(opts, new_branch_info->path);
 
-	/* "git checkout -B <branch>" */
+	/* "igit checkout -B <branch>" */
 	if (opts->new_branch_force) {
 		char *full_ref = xstrfmt("refs/heads/%s", opts->new_branch);
 		die_if_switching_to_a_branch_in_use(opts, full_ref);
@@ -1843,8 +1843,8 @@ static int checkout_main(int argc, const char **argv, const char *prefix,
 	if (opts->checkout_index < 0 || opts->checkout_worktree < 0)
 		BUG("these flags should be non-negative by now");
 	/*
-	 * convenient shortcut: "git restore --staged [--worktree]" equals
-	 * "git restore --staged [--worktree] --source HEAD"
+	 * convenient shortcut: "igit restore --staged [--worktree]" equals
+	 * "igit restore --staged [--worktree] --source HEAD"
 	 */
 	if (!opts->from_treeish && opts->checkout_index)
 		opts->from_treeish = "HEAD";
@@ -1928,7 +1928,7 @@ static int checkout_main(int argc, const char **argv, const char *prefix,
 				argv[0], opts->new_branch);
 
 		if (opts->force_detach)
-			die(_("git checkout: --detach does not take a path argument '%s'"),
+			die(_("igit checkout: --detach does not take a path argument '%s'"),
 			    argv[0]);
 	}
 
@@ -1953,7 +1953,7 @@ static int checkout_main(int argc, const char **argv, const char *prefix,
 
 	if (opts->pathspec.nr) {
 		if (1 < !!opts->writeout_stage + !!opts->force + !!opts->merge)
-			die(_("git checkout: --ours/--theirs, --force and --merge are incompatible when\n"
+			die(_("igit checkout: --ours/--theirs, --force and --merge are incompatible when\n"
 			      "checking out of the index."));
 	} else {
 		if (opts->accept_pathspec && !opts->empty_pathspec_ok &&
@@ -1999,7 +1999,7 @@ int cmd_checkout(int argc,
 			   N_("create/reset and checkout a branch")),
 		OPT_BOOL('l', NULL, &opts.new_branch_log, N_("create reflog for new branch")),
 		OPT_BOOL(0, "guess", &opts.dwim_new_local_branch,
-			 N_("second guess 'git checkout <no-such-branch>' (default)")),
+			 N_("second guess 'igit checkout <no-such-branch>' (default)")),
 		OPT_BOOL(0, "overlay", &opts.overlay_mode, N_("use overlay mode (default)")),
 		OPT_END()
 	};
@@ -2019,8 +2019,8 @@ int cmd_checkout(int argc,
 
 	if (argc == 3 && !strcmp(argv[1], "-b")) {
 		/*
-		 * User ran 'git checkout -b <branch>' and expects
-		 * the same behavior as 'git switch -c <branch>'.
+		 * User ran 'igit checkout -b <branch>' and expects
+		 * the same behavior as 'igit switch -c <branch>'.
 		 */
 		opts.switch_branch_doing_nothing_is_ok = 0;
 		opts.only_merge_on_switching_branches = 1;
@@ -2048,7 +2048,7 @@ int cmd_switch(int argc,
 		OPT_STRING('C', "force-create", &opts.new_branch_force, N_("branch"),
 			   N_("create/reset and switch to a branch")),
 		OPT_BOOL(0, "guess", &opts.dwim_new_local_branch,
-			 N_("second guess 'git switch <no-such-branch>'")),
+			 N_("second guess 'igit switch <no-such-branch>'")),
 		OPT_BOOL(0, "discard-changes", &opts.discard_changes,
 			 N_("throw away local modifications")),
 		OPT_END()

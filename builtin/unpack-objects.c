@@ -21,7 +21,7 @@
 #include "packfile.h"
 
 static int dry_run, quiet, recover, has_errors, strict;
-static const char unpack_usage[] = "git unpack-objects [-n] [-q] [-r] [--strict]";
+static const char unpack_usage[] = "igit unpack-objects [-n] [-q] [-r] [--strict]";
 
 /* We always read in 4kB chunks. */
 static unsigned char buffer[4096];

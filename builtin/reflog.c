@@ -14,26 +14,26 @@
 #include "parse-options.h"
 
 #define BUILTIN_REFLOG_SHOW_USAGE \
-	N_("git reflog [show] [<log-options>] [<ref>]")
+	N_("igit reflog [show] [<log-options>] [<ref>]")
 
 #define BUILTIN_REFLOG_LIST_USAGE \
-	N_("git reflog list")
+	N_("igit reflog list")
 
 #define BUILTIN_REFLOG_EXISTS_USAGE \
-	N_("git reflog exists <ref>")
+	N_("igit reflog exists <ref>")
 
 #define BUILTIN_REFLOG_WRITE_USAGE \
-	N_("git reflog write <ref> <old-oid> <new-oid> <message>")
+	N_("igit reflog write <ref> <old-oid> <new-oid> <message>")
 
 #define BUILTIN_REFLOG_DELETE_USAGE \
-	N_("git reflog delete [--rewrite] [--updateref]\n" \
+	N_("igit reflog delete [--rewrite] [--updateref]\n" \
 	   "                  [--dry-run | -n] [--verbose] <ref>@{<specifier>}...")
 
 #define BUILTIN_REFLOG_DROP_USAGE \
-	N_("git reflog drop [--all [--single-worktree] | <refs>...]")
+	N_("igit reflog drop [--all [--single-worktree] | <refs>...]")
 
 #define BUILTIN_REFLOG_EXPIRE_USAGE \
-	N_("git reflog expire [--expire=<time>] [--expire-unreachable=<time>]\n" \
+	N_("igit reflog expire [--expire=<time>] [--expire-unreachable=<time>]\n" \
 	   "                  [--rewrite] [--updateref] [--stale-fix]\n" \
 	   "                  [--dry-run | -n] [--verbose] [--all [--single-worktree] | <refs>...]")
 

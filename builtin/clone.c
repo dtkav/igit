@@ -1,5 +1,5 @@
 /*
- * Builtin "git clone"
+ * Builtin "igit clone"
  *
  * Copyright (c) 2007 Kristian Høgsberg <krh@redhat.com>,
  *		 2008 Daniel Barkalow <barkalow@iabervon.org>
@@ -384,8 +384,8 @@ static enum {
 
 static const char junk_leave_repo_msg[] =
 N_("Clone succeeded, but checkout failed.\n"
-   "You can inspect what was checked out with 'git status'\n"
-   "and retry with 'git restore --source=HEAD :/'\n");
+   "You can inspect what was checked out with 'igit status'\n"
+   "and retry with 'igit restore --source=HEAD :/'\n");
 
 static void remove_junk(void)
 {
@@ -811,7 +811,7 @@ static void write_refspec_config(const char *src_ref_prefix,
 						branch_top->buf, head);
 			}
 			/*
-			 * otherwise, the next "git fetch" will
+			 * otherwise, the next "igit fetch" will
 			 * simply fetch from HEAD without updating
 			 * any remote-tracking branch, which is what
 			 * we want.
@@ -995,7 +995,7 @@ int cmd_clone(int argc,
 	};
 
 	const char * const builtin_clone_usage[] = {
-		N_("git clone [<options>] [--] <repo> [<dir>]"),
+		N_("igit clone [<options>] [--] <repo> [<dir>]"),
 		NULL
 	};
 

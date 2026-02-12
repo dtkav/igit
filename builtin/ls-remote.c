@@ -10,7 +10,7 @@
 #include "wildmatch.h"
 
 static const char * const ls_remote_usage[] = {
-	N_("git ls-remote [--branches] [--tags] [--refs] [--upload-pack=<exec>]\n"
+	N_("igit ls-remote [--branches] [--tags] [--refs] [--upload-pack=<exec>]\n"
 	   "              [-q | --quiet] [--exit-code] [--get-url] [--sort=<key>]\n"
 	   "              [--symref] [<repository> [<patterns>...]]"),
 	NULL

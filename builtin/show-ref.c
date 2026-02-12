@@ -12,14 +12,14 @@
 #include "parse-options.h"
 
 static const char * const show_ref_usage[] = {
-	N_("git show-ref [--head] [-d | --dereference]\n"
+	N_("igit show-ref [--head] [-d | --dereference]\n"
 	   "             [-s | --hash[=<n>]] [--abbrev[=<n>]] [--branches] [--tags]\n"
 	   "             [--] [<pattern>...]"),
-	N_("git show-ref --verify [-q | --quiet] [-d | --dereference]\n"
+	N_("igit show-ref --verify [-q | --quiet] [-d | --dereference]\n"
 	   "             [-s | --hash[=<n>]] [--abbrev[=<n>]]\n"
 	   "             [--] [<ref>...]"),
-	N_("git show-ref --exclude-existing[=<pattern>]"),
-	N_("git show-ref --exists <ref>"),
+	N_("igit show-ref --exclude-existing[=<pattern>]"),
+	N_("igit show-ref --exists <ref>"),
 	NULL
 };
 
@@ -38,7 +38,7 @@ static void show_one(const struct show_one_options *opts,
 
 	if (!odb_has_object(the_repository->objects, ref->oid,
 			    HAS_OBJECT_RECHECK_PACKED | HAS_OBJECT_FETCH_PROMISOR))
-		die("git show-ref: bad ref %s (%s)", ref->name,
+		die("igit show-ref: bad ref %s (%s)", ref->name,
 		    oid_to_hex(ref->oid));
 
 	if (opts->quiet)

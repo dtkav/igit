@@ -11,9 +11,9 @@
 
 
 static const char * const builtin_range_diff_usage[] = {
-N_("git range-diff [<options>] <old-base>..<old-tip> <new-base>..<new-tip>"),
-N_("git range-diff [<options>] <old-tip>...<new-tip>"),
-N_("git range-diff [<options>] <base> <old-tip> <new-tip>"),
+N_("igit range-diff [<options>] <old-base>..<old-tip> <new-base>..<new-tip>"),
+N_("igit range-diff [<options>] <old-tip>...<new-tip>"),
+N_("igit range-diff [<options>] <base> <old-tip> <new-tip>"),
 NULL
 };
 
@@ -54,16 +54,16 @@ int cmd_range_diff(int argc,
 		OPT_BOOL(0, "no-dual-color", &simple_color,
 			    N_("use simple diff colors")),
 		OPT_PASSTHRU_ARGV(0, "notes", &log_arg,
-				  N_("notes"), N_("passed to 'git log'"),
+				  N_("notes"), N_("passed to 'igit log'"),
 				  PARSE_OPT_OPTARG),
 		OPT_PASSTHRU_ARGV(0, "diff-merges", &diff_merges_arg,
-				  N_("style"), N_("passed to 'git log'"), 0),
+				  N_("style"), N_("passed to 'igit log'"), 0),
 		OPT_CALLBACK(0, "max-memory", &range_diff_opts.max_memory,
 			     N_("size"),
 			     N_("maximum memory for cost matrix (default 4G)"),
 			     parse_max_memory),
 		OPT_PASSTHRU_ARGV(0, "remerge-diff", &diff_merges_arg, NULL,
-				  N_("passed to 'git log'"), PARSE_OPT_NOARG),
+				  N_("passed to 'igit log'"), PARSE_OPT_NOARG),
 		OPT_BOOL(0, "left-only", &left_only,
 			 N_("only emit output related to the first range")),
 		OPT_BOOL(0, "right-only", &right_only,

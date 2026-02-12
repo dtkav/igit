@@ -1,5 +1,5 @@
 /*
- * Builtin "git verify-tag"
+ * Builtin "igit verify-tag"
  *
  * Copyright (c) 2007 Carlos Rica <jasampler@gmail.com>
  *
@@ -16,7 +16,7 @@
 #include "ref-filter.h"
 
 static const char * const verify_tag_usage[] = {
-		N_("git verify-tag [-v | --verbose] [--format=<format>] [--raw] <tag>..."),
+		N_("igit verify-tag [-v | --verbose] [--format=<format>] [--raw] <tag>..."),
 		NULL
 };
 

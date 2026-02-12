@@ -1,5 +1,5 @@
 /*
- * Builtin "git branch"
+ * Builtin "igit branch"
  *
  * Copyright (c) 2006 Kristian Høgsberg <krh@redhat.com>
  * Based on git-branch.sh by Junio C Hamano.
@@ -30,14 +30,14 @@
 #include "commit-reach.h"
 
 static const char * const builtin_branch_usage[] = {
-	N_("git branch [<options>] [-r | -a] [--merged] [--no-merged]"),
-	N_("git branch [<options>] [-f] [--recurse-submodules] <branch-name> [<start-point>]"),
-	N_("git branch [<options>] [-l] [<pattern>...]"),
-	N_("git branch [<options>] [-r] (-d | -D) <branch-name>..."),
-	N_("git branch [<options>] (-m | -M) [<old-branch>] <new-branch>"),
-	N_("git branch [<options>] (-c | -C) [<old-branch>] <new-branch>"),
-	N_("git branch [<options>] [-r | -a] [--points-at]"),
-	N_("git branch [<options>] [-r | -a] [--format]"),
+	N_("igit branch [<options>] [-r | -a] [--merged] [--no-merged]"),
+	N_("igit branch [<options>] [-f] [--recurse-submodules] <branch-name> [<start-point>]"),
+	N_("igit branch [<options>] [-l] [<pattern>...]"),
+	N_("igit branch [<options>] [-r] (-d | -D) <branch-name>..."),
+	N_("igit branch [<options>] (-m | -M) [<old-branch>] <new-branch>"),
+	N_("igit branch [<options>] (-c | -C) [<old-branch>] <new-branch>"),
+	N_("igit branch [<options>] [-r | -a] [--points-at]"),
+	N_("igit branch [<options>] [-r | -a] [--format]"),
 	NULL
 };
 
@@ -202,7 +202,7 @@ static int check_branch_commit(const char *branchname, const char *refname,
 		error(_("the branch '%s' is not fully merged"), branchname);
 		advise_if_enabled(ADVICE_FORCE_DELETE_BRANCH,
 				  _("If you are sure you want to delete it, "
-				  "run 'git branch -D %s'"), branchname);
+				  "run 'igit branch -D %s'"), branchname);
 		return -1;
 	}
 	return 0;
@@ -591,7 +591,7 @@ static void copy_or_rename_branch(const char *oldname, const char *newname, int 
 		else {
 			int code = die_message(_("invalid branch name: '%s'"), oldname);
 			advise_if_enabled(ADVICE_REF_SYNTAX,
-					  _("See 'git help check-ref-format'"));
+					  _("See 'igit help check-ref-format'"));
 			exit(code);
 		}
 	}
@@ -615,7 +615,7 @@ static void copy_or_rename_branch(const char *oldname, const char *newname, int 
 	}
 
 	/*
-	 * A command like "git branch -M currentbranch currentbranch" cannot
+	 * A command like "igit branch -M currentbranch currentbranch" cannot
 	 * cause the worktree to become inconsistent with HEAD, so allow it.
 	 */
 	if (!strcmp(oldname, newname))
@@ -997,7 +997,7 @@ int cmd_branch(int argc,
 		const char *start_name = argc == 2 ? argv[1] : head;
 
 		if (filter.kind != FILTER_REFS_BRANCHES)
-			die(_("the -a, and -r, options to 'git branch' do not take a branch name.\n"
+			die(_("the -a, and -r, options to 'igit branch' do not take a branch name.\n"
 				  "Did you mean to use: -a|-r --list <pattern>?"));
 
 		if (track == BRANCH_TRACK_OVERRIDE)

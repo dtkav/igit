@@ -4,7 +4,7 @@
 #include "pkt-line.h"
 
 static const char usage_msg[] =
-	"git remote-ext <remote> <url>";
+	"igit remote-ext <remote> <url>";
 
 /*
  * URL syntax:

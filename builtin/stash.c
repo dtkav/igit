@@ -36,35 +36,35 @@
 #define INCLUDE_ALL_FILES 2
 
 #define BUILTIN_STASH_LIST_USAGE \
-	N_("git stash list [<log-options>]")
+	N_("igit stash list [<log-options>]")
 #define BUILTIN_STASH_SHOW_USAGE \
-	N_("git stash show [-u | --include-untracked | --only-untracked] [<diff-options>] [<stash>]")
+	N_("igit stash show [-u | --include-untracked | --only-untracked] [<diff-options>] [<stash>]")
 #define BUILTIN_STASH_DROP_USAGE \
-	N_("git stash drop [-q | --quiet] [<stash>]")
+	N_("igit stash drop [-q | --quiet] [<stash>]")
 #define BUILTIN_STASH_POP_USAGE \
-	N_("git stash pop [--index] [-q | --quiet] [<stash>]")
+	N_("igit stash pop [--index] [-q | --quiet] [<stash>]")
 #define BUILTIN_STASH_APPLY_USAGE \
-	N_("git stash apply [--index] [-q | --quiet] [<stash>]")
+	N_("igit stash apply [--index] [-q | --quiet] [<stash>]")
 #define BUILTIN_STASH_BRANCH_USAGE \
-	N_("git stash branch <branchname> [<stash>]")
+	N_("igit stash branch <branchname> [<stash>]")
 #define BUILTIN_STASH_STORE_USAGE \
-	N_("git stash store [(-m | --message) <message>] [-q | --quiet] <commit>")
+	N_("igit stash store [(-m | --message) <message>] [-q | --quiet] <commit>")
 #define BUILTIN_STASH_PUSH_USAGE \
-	N_("git stash [push [-p | --patch] [-S | --staged] [-k | --[no-]keep-index] [-q | --quiet]\n" \
+	N_("igit stash [push [-p | --patch] [-S | --staged] [-k | --[no-]keep-index] [-q | --quiet]\n" \
 	   "          [-u | --include-untracked] [-a | --all] [(-m | --message) <message>]\n" \
 	   "          [--pathspec-from-file=<file> [--pathspec-file-nul]]\n" \
 	   "          [--] [<pathspec>...]]")
 #define BUILTIN_STASH_SAVE_USAGE \
-	N_("git stash save [-p | --patch] [-S | --staged] [-k | --[no-]keep-index] [-q | --quiet]\n" \
+	N_("igit stash save [-p | --patch] [-S | --staged] [-k | --[no-]keep-index] [-q | --quiet]\n" \
 	   "          [-u | --include-untracked] [-a | --all] [<message>]")
 #define BUILTIN_STASH_CREATE_USAGE \
-	N_("git stash create [<message>]")
+	N_("igit stash create [<message>]")
 #define BUILTIN_STASH_EXPORT_USAGE \
-	N_("git stash export (--print | --to-ref <ref>) [<stash>...]")
+	N_("igit stash export (--print | --to-ref <ref>) [<stash>...]")
 #define BUILTIN_STASH_IMPORT_USAGE \
-	N_("git stash import <commit>")
+	N_("igit stash import <commit>")
 #define BUILTIN_STASH_CLEAR_USAGE \
-	"git stash clear"
+	"igit stash clear"
 
 static const char * const git_stash_usage[] = {
 	BUILTIN_STASH_LIST_USAGE,
@@ -325,7 +325,7 @@ static int clear_stash(int argc, const char **argv, const char *prefix,
 			     PARSE_OPT_STOP_AT_NON_OPTION);
 
 	if (argc)
-		return error(_("git stash clear with arguments is "
+		return error(_("igit stash clear with arguments is "
 			       "unimplemented"));
 
 	return do_clear_stash();
@@ -1072,7 +1072,7 @@ static int do_store_stash(const struct object_id *w_commit, const char *stash_ms
 	assert_stash_like(&info, revision);
 
 	if (!stash_msg)
-		stash_msg = "Created via \"git stash store\".";
+		stash_msg = "Created via \"igit stash store\".";
 
 	if (refs_update_ref(get_main_ref_store(the_repository), stash_msg, ref_stash, w_commit, NULL,
 			    REF_FORCE_CREATE_REFLOG,
@@ -1108,7 +1108,7 @@ static int store_stash(int argc, const char **argv, const char *prefix,
 
 	if (argc != 1) {
 		if (!quiet)
-			fprintf_ln(stderr, _("\"git stash store\" requires one "
+			fprintf_ln(stderr, _("\"igit stash store\" requires one "
 					     "<commit> argument"));
 		return -1;
 	}
@@ -1444,7 +1444,7 @@ static int do_create_stash(const struct pathspec *ps, struct strbuf *stash_msg_b
 	struct strbuf commit_tree_label = STRBUF_INIT;
 	struct strbuf untracked_files = STRBUF_INIT;
 
-	prepare_fallback_ident("git stash", "git@stash");
+	prepare_fallback_ident("igit stash", "git@stash");
 
 	repo_read_index_preload(the_repository, NULL, 0);
 	if (repo_refresh_and_write_index(the_repository, REFRESH_QUIET, 0, 0,
@@ -1637,7 +1637,7 @@ static int do_push_stash(const struct pathspec *ps, const char *stash_msg, int q
 				      ps_matched);
 
 		if (report_path_error(ps_matched, ps)) {
-			fprintf_ln(stderr, _("Did you forget to 'git add'?"));
+			fprintf_ln(stderr, _("Did you forget to 'igit add'?"));
 			ret = -1;
 			free(ps_matched);
 			goto done;
@@ -2026,7 +2026,7 @@ static int write_commit_with_parents(struct repository *r,
 	}
 
 	p = strstr(buffer, "\n\n");
-	strbuf_addstr(&msg, "git stash: ");
+	strbuf_addstr(&msg, "igit stash: ");
 
 	if (p)
 		strbuf_add(&msg, p + 2, bufsize - (p + 2 - buffer));
@@ -2075,8 +2075,8 @@ static int do_import_stash(struct repository *r, const char *rev)
 		const char *author, *committer;
 		size_t author_len, committer_len;
 		const char *p;
-		const char *expected = "git stash <git@stash> 1000684800 +0000";
-		const char *prefix = "git stash: ";
+		const char *expected = "igit stash <git@stash> 1000684800 +0000";
+		const char *prefix = "igit stash: ";
 		struct commit *stash;
 		struct tree *tree = repo_get_commit_tree(r, this);
 
@@ -2251,10 +2251,10 @@ static int do_export_stash(struct repository *r,
 	 * This is an arbitrary, fixed date, specifically the one used by git
 	 * format-patch.  The goal is merely to produce reproducible output.
 	 */
-	prepare_fallback_ident("git stash", "git@stash");
-	author = fmt_ident("git stash", "git@stash", WANT_BLANK_IDENT,
+	prepare_fallback_ident("igit stash", "git@stash");
+	author = fmt_ident("igit stash", "git@stash", WANT_BLANK_IDENT,
 			   "2001-09-17T00:00:00Z", 0);
-	committer = fmt_ident("git stash", "git@stash", WANT_BLANK_IDENT,
+	committer = fmt_ident("igit stash", "git@stash", WANT_BLANK_IDENT,
 			      "2001-09-17T00:00:00Z", 0);
 
 	/* First, we create a single empty commit. */

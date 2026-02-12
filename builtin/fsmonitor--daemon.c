@@ -22,10 +22,10 @@
 #include "trace2.h"
 
 static const char * const builtin_fsmonitor__daemon_usage[] = {
-	N_("git fsmonitor--daemon start [<options>]"),
-	N_("git fsmonitor--daemon run [<options>]"),
-	"git fsmonitor--daemon stop",
-	"git fsmonitor--daemon status",
+	N_("igit fsmonitor--daemon start [<options>]"),
+	N_("igit fsmonitor--daemon run [<options>]"),
+	"igit fsmonitor--daemon stop",
+	"igit fsmonitor--daemon status",
 	NULL
 };
 

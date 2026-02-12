@@ -1,5 +1,5 @@
 /*
- * Builtin "git am"
+ * Builtin "igit am"
  *
  * Based on git-am.sh by Junio C Hamano.
  */
@@ -528,7 +528,7 @@ static int copy_notes_for_rebase(const struct am_state *state)
 	struct notes_rewrite_cfg *c;
 	struct strbuf sb = STRBUF_INIT;
 	const char *invalid_line = _("Malformed input line: '%s'.");
-	const char *msg = "Notes added by 'git rebase'";
+	const char *msg = "Notes added by 'igit rebase'";
 	FILE *fp;
 	int ret = 0;
 
@@ -1161,7 +1161,7 @@ static void NORETURN die_user_resolve(const struct am_state *state)
 	if (state->resolvemsg) {
 		advise_if_enabled(ADVICE_MERGE_CONFLICT, "%s", state->resolvemsg);
 	} else {
-		const char *cmdline = state->interactive ? "git am -i" : "git am";
+		const char *cmdline = state->interactive ? "igit am -i" : "igit am";
 		struct strbuf sb = STRBUF_INIT;
 
 		strbuf_addf(&sb, _("When you have resolved this problem, run \"%s --continue\".\n"), cmdline);
@@ -1675,7 +1675,7 @@ static void do_commit(const struct am_state *state)
 	if (write_index_as_tree(&tree, the_repository->index,
 				repo_get_index_file(the_repository),
 				0, NULL))
-		die(_("git write-tree failed to write a tree"));
+		die(_("igit write-tree failed to write a tree"));
 
 	if (!repo_get_oid_commit(the_repository, "HEAD", &parent)) {
 		old_oid = &parent;
@@ -1909,7 +1909,7 @@ static void am_run(struct am_state *state, int resume)
 				linelen(state->msg), state->msg);
 
 			if (advice_enabled(ADVICE_AM_WORK_DIR))
-				advise(_("Use 'git am --show-current-patch=diff' to see the failed patch"));
+				advise(_("Use 'igit am --show-current-patch=diff' to see the failed patch"));
 
 			die_user_resolve(state);
 		}
@@ -1957,7 +1957,7 @@ static void am_resolve(struct am_state *state, int allow_empty)
 		if (allow_empty && is_empty_or_missing_file(am_path(state, "patch"))) {
 			printf_ln(_("No changes - recorded it as an empty commit."));
 		} else {
-			printf_ln(_("No changes - did you forget to use 'git add'?\n"
+			printf_ln(_("No changes - did you forget to use 'igit add'?\n"
 				    "If there is nothing left to stage, chances are that something else\n"
 				    "already introduced the same changes; you might want to skip this patch."));
 			die_user_resolve(state);
@@ -1966,7 +1966,7 @@ static void am_resolve(struct am_state *state, int allow_empty)
 
 	if (unmerged_index(the_repository->index)) {
 		printf_ln(_("You still have unmerged paths in your index.\n"
-			"You should 'git add' each file with resolved conflicts to mark them as such.\n"
+			"You should 'igit add' each file with resolved conflicts to mark them as such.\n"
 			"You might run `git rm` on a file to accept \"deleted by them\" for it."));
 		die_user_resolve(state);
 	}
@@ -2321,8 +2321,8 @@ int cmd_am(int argc,
 	int ret = 0;
 
 	const char * const usage[] = {
-		N_("git am [<options>] [(<mbox> | <Maildir>)...]"),
-		N_("git am [<options>] (--continue | --skip | --abort)"),
+		N_("igit am [<options>] [(<mbox> | <Maildir>)...]"),
+		N_("igit am [<options>] (--continue | --skip | --abort)"),
 		NULL
 	};
 
@@ -2503,7 +2503,7 @@ int cmd_am(int argc,
 			}
 
 			die(_("Stray %s directory found.\n"
-				"Use \"git am --abort\" to remove it."),
+				"Use \"igit am --abort\" to remove it."),
 				state.dir);
 		}
 

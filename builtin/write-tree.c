@@ -14,7 +14,7 @@
 #include "parse-options.h"
 
 static const char * const write_tree_usage[] = {
-	N_("git write-tree [--missing-ok] [--prefix=<prefix>/]"),
+	N_("igit write-tree [--missing-ok] [--prefix=<prefix>/]"),
 	NULL
 };
 

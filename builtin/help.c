@@ -95,12 +95,12 @@ static struct option builtin_help_options[] = {
 };
 
 static const char * const builtin_help_usage[] = {
-	"git help [-a|--all] [--[no-]verbose] [--[no-]external-commands] [--[no-]aliases]",
-	N_("git help [[-i|--info] [-m|--man] [-w|--web]] [<command>|<doc>]"),
-	"git help [-g|--guides]",
-	"git help [-c|--config]",
-	"git help [--user-interfaces]",
-	"git help [--developer-interfaces]",
+	"igit help [-a|--all] [--[no-]verbose] [--[no-]external-commands] [--[no-]aliases]",
+	N_("igit help [[-i|--info] [-m|--man] [-w|--web]] [<command>|<doc>]"),
+	"igit help [-g|--guides]",
+	"igit help [-c|--config]",
+	"igit help [--user-interfaces]",
+	"igit help [--developer-interfaces]",
 	NULL
 };
 
@@ -565,10 +565,10 @@ static char *check_git_cmd(const char *cmd)
 		int count;
 
 		/*
-		 * handle_builtin() in git.c rewrites "git cmd --help"
-		 * to "git help --exclude-guides cmd", so we can use
-		 * exclude_guides to distinguish "git cmd --help" from
-		 * "git help cmd". In the latter case, or if cmd is an
+		 * handle_builtin() in git.c rewrites "igit cmd --help"
+		 * to "igit help --exclude-guides cmd", so we can use
+		 * exclude_guides to distinguish "igit cmd --help" from
+		 * "igit help cmd". In the latter case, or if cmd is an
 		 * alias for a shell command, just print the alias
 		 * definition.
 		 */
@@ -695,7 +695,7 @@ int cmd_help(int argc,
 		opt_mode_usage(argc, "--config", help_format);
 		setup_pager(the_repository);
 		list_config_help(SHOW_CONFIG_HUMAN);
-		printf("\n%s\n", _("'git help config' for more information"));
+		printf("\n%s\n", _("'igit help config' for more information"));
 		return 0;
 	}
 

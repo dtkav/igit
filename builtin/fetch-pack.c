@@ -13,7 +13,7 @@
 #include "protocol.h"
 
 static const char fetch_pack_usage[] =
-"git fetch-pack [--all] [--stdin] [--quiet | -q] [--keep | -k] [--thin] "
+"igit fetch-pack [--all] [--stdin] [--quiet | -q] [--keep | -k] [--thin] "
 "[--include-tag] [--upload-pack=<git-upload-pack>] [--depth=<n>] "
 "[--no-progress] [--diag-url] [-v] [<host>:]<directory> [<refs>...]";
 
@@ -283,7 +283,7 @@ int cmd_fetch_pack(int argc,
 
 	/*
 	 * If the heads to pull were given, we should have consumed
-	 * all of them by matching the remote.  Otherwise, 'git fetch
+	 * all of them by matching the remote.  Otherwise, 'igit fetch
 	 * remote no-such-ref' would silently succeed without issuing
 	 * an error.
 	 */

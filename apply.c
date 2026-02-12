@@ -938,19 +938,19 @@ static int gitdiff_verify_name(struct gitdiff_data *state,
 	if (*name) {
 		char *another;
 		if (isnull)
-			return error(_("git apply: bad git-diff - expected /dev/null, got %s on line %d"),
+			return error(_("igit apply: bad git-diff - expected /dev/null, got %s on line %d"),
 				     *name, state->linenr);
 		another = find_name(state->root, line, NULL, state->p_value, TERM_TAB);
 		if (!another || strcmp(another, *name)) {
 			free(another);
 			return error((side == DIFF_NEW_NAME) ?
-			    _("git apply: bad git-diff - inconsistent new filename on line %d") :
-			    _("git apply: bad git-diff - inconsistent old filename on line %d"), state->linenr);
+			    _("igit apply: bad git-diff - inconsistent new filename on line %d") :
+			    _("igit apply: bad git-diff - inconsistent old filename on line %d"), state->linenr);
 		}
 		free(another);
 	} else {
 		if (!is_dev_null(line))
-			return error(_("git apply: bad git-diff - expected /dev/null on line %d"), state->linenr);
+			return error(_("igit apply: bad git-diff - expected /dev/null on line %d"), state->linenr);
 	}
 
 	return 0;
@@ -1396,9 +1396,9 @@ int parse_git_diff_header(struct strbuf *root,
 done:
 	if (!patch->old_name && !patch->new_name) {
 		if (!patch->def_name) {
-			error(Q_("git diff header lacks filename information when removing "
+			error(Q_("igit diff header lacks filename information when removing "
 				 "%d leading pathname component (line %d)",
-				 "git diff header lacks filename information when removing "
+				 "igit diff header lacks filename information when removing "
 				 "%d leading pathname components (line %d)",
 				 parse_hdr_state.p_value),
 			      parse_hdr_state.p_value, *linenr);
@@ -1409,7 +1409,7 @@ done:
 	}
 	if ((!patch->new_name && !patch->is_delete) ||
 	    (!patch->old_name && !patch->is_new)) {
-		error(_("git diff header lacks filename information "
+		error(_("igit diff header lacks filename information "
 			"(line %d)"), *linenr);
 		return -128;
 	}
@@ -2337,7 +2337,7 @@ static int read_old_data(struct stat *st, struct patch *patch,
 		if (strbuf_read_file(buf, path, st->st_size) != st->st_size)
 			return error(_("unable to open or read %s"), path);
 		/*
-		 * "git apply" without "--index/--cached" should never look
+		 * "igit apply" without "--index/--cached" should never look
 		 * at the index; the target file may not have been added to
 		 * the index yet, and we may not even be in any Git repository.
 		 * Pass NULL to convert_to_git() to stress this; the function

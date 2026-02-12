@@ -147,7 +147,7 @@ int cmd_credential_cache(int argc,
 	int timeout = 900;
 	const char *op;
 	const char * const usage[] = {
-		"git credential-cache [<options>] <action>",
+		"igit credential-cache [<options>] <action>",
 		NULL
 	};
 	struct option options[] = {
@@ -193,7 +193,7 @@ int cmd_credential_cache(int argc, const char **argv, const char *prefix,
 			 struct repository *repo UNUSED)
 {
 	const char * const usage[] = {
-		"git credential-cache [options] <action>",
+		"igit credential-cache [options] <action>",
 		"",
 		"credential-cache is disabled in this build of Git",
 		NULL

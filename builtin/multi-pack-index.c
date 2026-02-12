@@ -13,17 +13,17 @@
 #include "repository.h"
 
 #define BUILTIN_MIDX_WRITE_USAGE \
-	N_("git multi-pack-index [<options>] write [--preferred-pack=<pack>]" \
+	N_("igit multi-pack-index [<options>] write [--preferred-pack=<pack>]" \
 	   "[--refs-snapshot=<path>]")
 
 #define BUILTIN_MIDX_VERIFY_USAGE \
-	N_("git multi-pack-index [<options>] verify")
+	N_("igit multi-pack-index [<options>] verify")
 
 #define BUILTIN_MIDX_EXPIRE_USAGE \
-	N_("git multi-pack-index [<options>] expire")
+	N_("igit multi-pack-index [<options>] expire")
 
 #define BUILTIN_MIDX_REPACK_USAGE \
-	N_("git multi-pack-index [<options>] repack [--batch-size=<size>]")
+	N_("igit multi-pack-index [<options>] repack [--batch-size=<size>]")
 
 static char const * const builtin_multi_pack_index_write_usage[] = {
 	BUILTIN_MIDX_WRITE_USAGE,

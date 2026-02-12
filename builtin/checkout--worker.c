@@ -113,7 +113,7 @@ static void worker_loop(struct checkout *state)
 }
 
 static const char * const checkout_worker_usage[] = {
-	N_("git checkout--worker [<options>]"),
+	N_("igit checkout--worker [<options>]"),
 	NULL
 };
 

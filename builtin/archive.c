@@ -53,15 +53,15 @@ static int run_remote_archiver(int argc, const char **argv,
 			   PACKET_READ_DIE_ON_ERR_PACKET);
 
 	if (packet_reader_read(&reader) != PACKET_READ_NORMAL)
-		die(_("git archive: expected ACK/NAK, got a flush packet"));
+		die(_("igit archive: expected ACK/NAK, got a flush packet"));
 	if (strcmp(reader.line, "ACK")) {
 		if (starts_with(reader.line, "NACK "))
-			die(_("git archive: NACK %s"), reader.line + 5);
-		die(_("git archive: protocol error"));
+			die(_("igit archive: NACK %s"), reader.line + 5);
+		die(_("igit archive: protocol error"));
 	}
 
 	if (packet_reader_read(&reader) != PACKET_READ_FLUSH)
-		die(_("git archive: expected a flush"));
+		die(_("igit archive: expected a flush"));
 
 	/* Now, start reading from fd[0] and spit it out to stdout */
 	rv = recv_sideband("archive", fd[0], 1);

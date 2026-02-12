@@ -1,5 +1,5 @@
 /*
- * "git difftool" builtin command
+ * "igit difftool" builtin command
  *
  * This is a wrapper around the GIT_EXTERNAL_DIFF-compatible
  * git-difftool--helper script.
@@ -7,7 +7,7 @@
  * This script exports GIT_EXTERNAL_DIFF and GIT_PAGER for use by git.
  * The GIT_DIFF* variables are exported for use by git-difftool--helper.
  *
- * Any arguments that are unknown to this script are forwarded to 'git diff'.
+ * Any arguments that are unknown to this script are forwarded to 'igit diff'.
  *
  * Copyright (C) 2016 Johannes Schindelin
  */
@@ -36,7 +36,7 @@
 #include "setup.h"
 
 static const char *const builtin_difftool_usage[] = {
-	N_("git difftool [<options>] [<commit> [<commit>]] [--] [<path>...]"),
+	N_("igit difftool [<options>] [<commit> [<commit>]] [--] [<path>...]"),
 	NULL
 };
 
@@ -286,7 +286,7 @@ static int ensure_leading_directories(struct repository *repo, char *path)
 
 /*
  * Unconditional writing of a plain regular file is what
- * "git difftool --dir-diff" wants to do for symlinks.  We are preparing two
+ * "igit difftool --dir-diff" wants to do for symlinks.  We are preparing two
  * temporary directories to be fed to a Git-unaware tool that knows how to
  * show a diff of two directories (e.g. "diff -r A B").
  *
@@ -294,7 +294,7 @@ static int ensure_leading_directories(struct repository *repo, char *path)
  * these temporary directories, it will try to dereference and show the
  * difference of the target of the symbolic link, which is not what we want,
  * as the goal of the dir-diff mode is to produce an output that is logically
- * equivalent to what "git diff" produces.
+ * equivalent to what "igit diff" produces.
  *
  * Most importantly, we want to get textual comparison of the result of the
  * readlink(2).  get_symlink() provides that---it returns the contents of
@@ -355,7 +355,7 @@ static void write_file_in_directory(struct repository *repo,
 /* Write the file contents for the left and right sides of the difftool
  * dir-diff representation for submodules and symlinks. Symlinks and submodules
  * are written as regular text files so that external diff tools can diff them
- * as text files, resulting in behavior that is analogous to what "git diff"
+ * as text files, resulting in behavior that is analogous to what "igit diff"
  * displays for symlink and submodule diffs.
  */
 static void write_standin_files(struct repository *repo,
@@ -583,7 +583,7 @@ static int run_dir_diff(struct repository *repo,
 	}
 
 	/*
-	 * Symbolic links require special treatment. The standard "git diff"
+	 * Symbolic links require special treatment. The standard "igit diff"
 	 * shows only the link itself, not the contents of the link target.
 	 * This loop replicates that behavior.
 	 */
@@ -806,7 +806,7 @@ int cmd_difftool(int argc,
 
 	/*
 	 * In directory diff mode, 'git-difftool--helper' is called once
-	 * to compare the a / b directories. In file diff mode, 'git diff'
+	 * to compare the a / b directories. In file diff mode, 'igit diff'
 	 * will invoke a separate instance of 'git-difftool--helper' for
 	 * each file that changed.
 	 */

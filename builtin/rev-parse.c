@@ -429,7 +429,7 @@ static int cmd_parseopt(int argc, const char **argv, const char *prefix)
 {
 	int keep_dashdash = 0, stop_at_non_option = 0;
 	char const * const parseopt_usage[] = {
-		N_("git rev-parse --parseopt [<options>] -- [<args>...]"),
+		N_("igit rev-parse --parseopt [<options>] -- [<args>...]"),
 		NULL
 	};
 	struct option parseopt_opts[] = {
@@ -586,11 +586,11 @@ static void die_no_single_rev(int quiet)
 }
 
 static const char builtin_rev_parse_usage[] =
-N_("git rev-parse --parseopt [<options>] -- [<args>...]\n"
+N_("igit rev-parse --parseopt [<options>] -- [<args>...]\n"
    "   or: git rev-parse --sq-quote [<arg>...]\n"
    "   or: git rev-parse [<options>] [<arg>...]\n"
    "\n"
-   "Run \"git rev-parse --parseopt -h\" for more information on the first usage.");
+   "Run \"igit rev-parse --parseopt -h\" for more information on the first usage.");
 
 /*
  * Parse "opt" or "opt=<value>", setting value respectively to either

@@ -52,8 +52,8 @@ static int use_curl = USE_CURL_DEFAULT;
 static char *opt_folder;
 
 static char const * const imap_send_usage[] = {
-	N_("git imap-send [-v] [-q] [--[no-]curl] [(--folder|-f) <folder>] < <mbox>"),
-	"git imap-send --list",
+	N_("igit imap-send [-v] [-q] [--[no-]curl] [(--folder|-f) <folder>] < <mbox>"),
+	"igit imap-send --list",
 	NULL
 };
 

@@ -1,5 +1,5 @@
 /*
- * "git rm" builtin command
+ * "igit rm" builtin command
  *
  * Copyright (C) Linus Torvalds 2006
  */
@@ -26,7 +26,7 @@
 #include "pathspec.h"
 
 static const char * const builtin_rm_usage[] = {
-	N_("git rm [-f | --force] [-n] [-r] [--cached] [--ignore-unmatch]\n"
+	N_("igit rm [-f | --force] [-n] [-r] [--cached] [--ignore-unmatch]\n"
 	   "       [--quiet] [--pathspec-from-file=<file> [--pathspec-file-nul]]\n"
 	   "       [--] [<pathspec>...]"),
 	NULL
@@ -196,8 +196,8 @@ static int check_local_mod(struct object_id *head, int index_only)
 		/*
 		 * If the index does not match the file in the work
 		 * tree and if it does not match the HEAD commit
-		 * either, (1) "git rm" without --cached definitely
-		 * will lose information; (2) "git rm --cached" will
+		 * either, (1) "igit rm" without --cached definitely
+		 * will lose information; (2) "igit rm --cached" will
 		 * lose information unless it is about removing an
 		 * "intent to add" entry.
 		 */
@@ -396,7 +396,7 @@ int cmd_rm(int argc,
 			printf("rm '%s'\n", path);
 
 		if (remove_file_from_index(the_repository->index, path))
-			die(_("git rm: unable to remove %s"), path);
+			die(_("igit rm: unable to remove %s"), path);
 	}
 
 	if (show_only)
@@ -405,7 +405,7 @@ int cmd_rm(int argc,
 	/*
 	 * Then, unless we used "--cached", remove the filenames from
 	 * the workspace. If we fail to remove the first one, we
-	 * abort the "git rm" (but once we've successfully removed
+	 * abort the "igit rm" (but once we've successfully removed
 	 * any file at all, we'll go ahead and commit to it all:
 	 * by then we've already committed ourselves and can't fail
 	 * in the middle)
@@ -432,7 +432,7 @@ int cmd_rm(int argc,
 				continue;
 			}
 			if (!removed)
-				die_errno("git rm: '%s'", path);
+				die_errno("igit rm: '%s'", path);
 		}
 		strbuf_release(&buf);
 		if (gitmodules_modified)

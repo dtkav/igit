@@ -37,7 +37,7 @@ struct cmd_struct {
 };
 
 const char git_usage_string[] =
-	N_("git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n"
+	N_("igit [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n"
 	   "           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n"
 	   "           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n"
 	   "           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n"
@@ -45,10 +45,10 @@ const char git_usage_string[] =
 	   "           <command> [<args>]");
 
 const char git_more_info_string[] =
-	N_("'git help -a' and 'git help -g' list available subcommands and some\n"
-	   "concept guides. See 'git help <command>' or 'git help <concept>'\n"
+	N_("'igit help -a' and 'igit help -g' list available subcommands and some\n"
+	   "concept guides. See 'igit help <command>' or 'igit help <concept>'\n"
 	   "to read about a specific subcommand or concept.\n"
-	   "See 'git help git' for an overview of the system.");
+	   "See 'igit help git' for an overview of the system.");
 
 static int use_pager = -1;
 
@@ -473,7 +473,7 @@ static int run_builtin(struct cmd_struct *p, int argc, const char **argv, struct
 
 	help = argc == 2 && (!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help-all"));
 	if (help && (run_setup & RUN_SETUP))
-		/* demote to GENTLY to allow 'git cmd -h' outside repo */
+		/* demote to GENTLY to allow 'igit cmd -h' outside repo */
 		run_setup = RUN_SETUP_GENTLY;
 
 	if (run_setup & RUN_SETUP) {
@@ -752,7 +752,7 @@ static void handle_builtin(struct strvec *args)
 	strip_extension(args);
 	cmd = args->v[0];
 
-	/* Turn "git cmd --help" into "git help --exclude-guides cmd" */
+	/* Turn "igit cmd --help" into "igit help --exclude-guides cmd" */
 	if (args->nr > 1 && !strcmp(args->v[1], "--help")) {
 		const char *exclude_guides_arg[] = { "--exclude-guides" };
 
@@ -900,7 +900,7 @@ static int run_argv(struct strvec *args)
 
 		/*
 		 * It could be an alias -- this works around the insanity
-		 * of overriding "git log" with "git show" by having
+		 * of overriding "igit log" with "igit show" by having
 		 * alias.log = show
 		 */
 		if (!handle_alias(args, &expanded_aliases))
@@ -931,7 +931,7 @@ int cmd_main(int argc, const char **argv)
 	trace_command_performance(argv);
 
 	/*
-	 * "git-xxxx" is the same as "git xxxx", but we obviously:
+	 * "git-xxxx" is the same as "igit xxxx", but we obviously:
 	 *
 	 *  - cannot take flags in between the "git" and the "xxxx".
 	 *  - cannot execute it externally (since it would just do

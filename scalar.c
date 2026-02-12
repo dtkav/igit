@@ -223,8 +223,8 @@ static int set_recommended_config(int reconfigure)
 /**
  * Enable or disable the maintenance mode for the current repository:
  *
- * * If 'enable' is nonzero, run 'git maintenance start'.
- * * If 'enable' is zero, run 'git maintenance unregister --force'.
+ * * If 'enable' is nonzero, run 'igit maintenance start'.
+ * * If 'enable' is zero, run 'igit maintenance unregister --force'.
  */
 static int toggle_maintenance(int enable)
 {

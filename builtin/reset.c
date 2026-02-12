@@ -1,5 +1,5 @@
 /*
- * "git reset" builtin command
+ * "igit reset" builtin command
  *
  * Copyright (c) 2007 Carlos Rica
  *
@@ -42,10 +42,10 @@
 #define REFRESH_INDEX_DELAY_WARNING_IN_MS (2 * 1000)
 
 static const char * const git_reset_usage[] = {
-	N_("git reset [--mixed | --soft | --hard | --merge | --keep] [-q] [<commit>]"),
-	N_("git reset [-q] [<tree-ish>] [--] <pathspec>..."),
-	N_("git reset [-q] [--pathspec-from-file [--pathspec-file-nul]] [<tree-ish>]"),
-	N_("git reset --patch [<tree-ish>] [--] [<pathspec>...]"),
+	N_("igit reset [--mixed | --soft | --hard | --merge | --keep] [-q] [<commit>]"),
+	N_("igit reset [-q] [<tree-ish>] [--] <pathspec>..."),
+	N_("igit reset [-q] [--pathspec-from-file [--pathspec-file-nul]] [<tree-ish>]"),
+	N_("igit reset --patch [<tree-ish>] [--] [<pathspec>...]"),
 	NULL
 };
 
@@ -450,7 +450,7 @@ int cmd_reset(int argc,
 	 * affecting the working tree nor HEAD. */
 	if (pathspec.nr) {
 		if (reset_type == MIXED)
-			warning(_("--mixed with paths is deprecated; use 'git reset -- <paths>' instead."));
+			warning(_("--mixed with paths is deprecated; use 'igit reset -- <paths>' instead."));
 		else if (reset_type != NONE)
 			die(_("Cannot do %s reset with paths."),
 					_(reset_type_names[reset_type]));

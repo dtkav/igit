@@ -31,7 +31,7 @@ static char *packdir, *packtmp_name, *packtmp;
 static int midx_must_contain_cruft = 1;
 
 static const char *const git_repack_usage[] = {
-	N_("git repack [-a] [-A] [-d] [-f] [-F] [-l] [-n] [-q] [-b] [-m]\n"
+	N_("igit repack [-a] [-A] [-d] [-f] [-F] [-l] [-n] [-q] [-b] [-m]\n"
 	   "[--window=<n>] [--depth=<n>] [--threads=<n>] [--keep-pack=<pack-name>]\n"
 	   "[--write-midx] [--name-hash-version=<n>] [--path-walk]"),
 	NULL
@@ -286,7 +286,7 @@ int cmd_repack(int argc,
 		 * are reachable from reflogs and the index.
 		 *
 		 * When repacking into a geometric progression of packs,
-		 * however, we ask 'git pack-objects --stdin-packs', and it is
+		 * however, we ask 'igit pack-objects --stdin-packs', and it is
 		 * not about packing objects based on reachability but about
 		 * repacking all the objects in specified packs and loose ones
 		 * (indeed, --stdin-packs is incompatible with these options).

@@ -36,8 +36,8 @@
 #include "tag.h"
 #include "write-or-die.h"
 
-static const char blame_usage[] = N_("git blame [<options>] [<rev-opts>] [<rev>] [--] <file>");
-static const char annotate_usage[] = N_("git annotate [<options>] [<rev-opts>] [<rev>] [--] <file>");
+static const char blame_usage[] = N_("igit blame [<options>] [<rev-opts>] [<rev>] [--] <file>");
+static const char annotate_usage[] = N_("igit annotate [<options>] [<rev-opts>] [<rev>] [--] <file>");
 
 static const char *const blame_opt_usage[] = {
 	blame_usage,
@@ -1083,7 +1083,7 @@ parse_done:
 		/*
 		 * TRANSLATORS: This string is used to tell us the
 		 * maximum display width for a relative timestamp in
-		 * "git blame" output.  For C locale, "4 years, 11
+		 * "igit blame" output.  For C locale, "4 years, 11
 		 * months ago", which takes 22 places, is the longest
 		 * among various forms of relative timestamps, but
 		 * your language may need more or fewer display

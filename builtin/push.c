@@ -1,5 +1,5 @@
 /*
- * "git push"
+ * "igit push"
  */
 
 #define USE_THE_REPOSITORY_VARIABLE
@@ -23,7 +23,7 @@
 #include "color.h"
 
 static const char * const push_usage[] = {
-	N_("git push [<options>] [<repository> [<refspec>...]]"),
+	N_("igit push [<options>] [<repository> [<refspec>...]]"),
 	NULL,
 };
 
@@ -161,14 +161,14 @@ static NORETURN void die_push_simple(struct branch *branch,
 	if (push_default == PUSH_DEFAULT_UNSPECIFIED)
 		advice_pushdefault_maybe = _("\n"
 				 "To choose either option permanently, "
-				 "see push.default in 'git help config'.\n");
+				 "see push.default in 'igit help config'.\n");
 	if (git_branch_track != BRANCH_TRACK_SIMPLE)
 		advice_automergesimple_maybe = _("\n"
 				 "To avoid automatically configuring "
 				 "an upstream branch when its name\n"
 				 "won't match the local branch, see option "
 				 "'simple' of branch.autoSetupMerge\n"
-				 "in 'git help config'.\n");
+				 "in 'igit help config'.\n");
 	die(_("The upstream branch of your current branch does not match\n"
 	      "the name of your current branch.  To push to the upstream branch\n"
 	      "on the remote, use\n"
@@ -205,7 +205,7 @@ static const char *get_upstream_ref(int flags, struct branch *branch, const char
 					   "To have this happen automatically for "
 					   "branches without a tracking\n"
 					   "upstream, see 'push.autoSetupRemote' "
-					   "in 'git help config'.\n");
+					   "in 'igit help config'.\n");
 		}
 		die(_("The current branch %s has no upstream branch.\n"
 		    "To push the current branch and set the remote as upstream, use\n"
@@ -287,21 +287,21 @@ static void setup_default_push_refspecs(int *flags, struct remote *remote)
 static const char message_advice_pull_before_push[] =
 	N_("Updates were rejected because the tip of your current branch is behind\n"
 	   "its remote counterpart. If you want to integrate the remote changes,\n"
-	   "use 'git pull' before pushing again.\n"
-	   "See the 'Note about fast-forwards' in 'git push --help' for details.");
+	   "use 'igit pull' before pushing again.\n"
+	   "See the 'Note about fast-forwards' in 'igit push --help' for details.");
 
 static const char message_advice_checkout_pull_push[] =
 	N_("Updates were rejected because a pushed branch tip is behind its remote\n"
-	   "counterpart. If you want to integrate the remote changes, use 'git pull'\n"
+	   "counterpart. If you want to integrate the remote changes, use 'igit pull'\n"
 	   "before pushing again.\n"
-	   "See the 'Note about fast-forwards' in 'git push --help' for details.");
+	   "See the 'Note about fast-forwards' in 'igit push --help' for details.");
 
 static const char message_advice_ref_fetch_first[] =
 	N_("Updates were rejected because the remote contains work that you do not\n"
 	   "have locally. This is usually caused by another repository pushing to\n"
 	   "the same ref. If you want to integrate the remote changes, use\n"
-	   "'git pull' before pushing again.\n"
-	   "See the 'Note about fast-forwards' in 'git push --help' for details.");
+	   "'igit pull' before pushing again.\n"
+	   "See the 'Note about fast-forwards' in 'igit push --help' for details.");
 
 static const char message_advice_ref_already_exists[] =
 	N_("Updates were rejected because the tag already exists in the remote.");
@@ -314,8 +314,8 @@ static const char message_advice_ref_needs_force[] =
 static const char message_advice_ref_needs_update[] =
 	N_("Updates were rejected because the tip of the remote-tracking branch has\n"
 	   "been updated since the last checkout. If you want to integrate the\n"
-	   "remote changes, use 'git pull' before pushing again.\n"
-	   "See the 'Note about fast-forwards' in 'git push --help' for details.");
+	   "remote changes, use 'igit pull' before pushing again.\n"
+	   "See the 'Note about fast-forwards' in 'igit push --help' for details.");
 
 static void advise_pull_before_push(void)
 {
