@@ -875,7 +875,7 @@ static int run_argv(struct strvec *args)
 
 			commit_pager_choice();
 
-			strvec_push(&cmd.args, "git");
+			strvec_push(&cmd.args, "igit");
 			for (size_t i = 0; i < args->nr; i++)
 				strvec_push(&cmd.args, args->v[i]);
 

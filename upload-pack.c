@@ -298,7 +298,7 @@ static void create_pack_file(struct upload_pack_data *pack_data,
 		pack_objects.git_cmd = 1;
 	else {
 		strvec_push(&pack_objects.args, pack_data->pack_objects_hook);
-		strvec_push(&pack_objects.args, "git");
+		strvec_push(&pack_objects.args, "igit");
 		pack_objects.use_shell = 1;
 	}
 
